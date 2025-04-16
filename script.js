@@ -28,9 +28,8 @@ function login() {
 
     signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-            // Connexion réussie, afficher le contenu protégé
-            document.getElementById("loginForm").style.display = "none";
-            document.getElementById("protectedContent").style.display = "block";
+            // Connexion réussie, redirige vers next.html
+            window.location.href = "next.html";  // Redirection vers next.html
         })
         .catch((error) => {
             alert(error.message); // Afficher le message d'erreur
