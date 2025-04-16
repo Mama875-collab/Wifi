@@ -5,47 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projet Wi-Fi Public</title>
     <link rel="stylesheet" href="style.css">
-    <script type="module">
-        // Importer les fonctions nécessaires depuis le SDK de Firebase
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js";
-        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
-
-        // Configuration de votre application web Firebase
-        const firebaseConfig = {
-            apiKey: "AIzaSyAzq0LsdEssEyGEKIdFgNsxTP0FGmwZYIU",
-            authDomain: "wifi-24532.firebaseapp.com",
-            projectId: "wifi-24532",
-            storageBucket: "wifi-24532.appspot.com",
-            messagingSenderId: "922684726790",
-            appId: "1:922684726790:web:06fa4ab85441b967daed87",
-            measurementId: "G-MEX7XTF0BG"
-        };
-
-        // Initialiser Firebase
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-        const auth = getAuth(app);
-
-        // Fonction de connexion
-        function login() {
-            const email = document.getElementById("email").value;
-            const password = document.getElementById("password").value;
-
-            signInWithEmailAndPassword(auth, email, password)
-                .then((userCredential) => {
-                    // Connexion réussie, afficher le contenu protégé
-                    document.getElementById("loginForm").style.display = "none";
-                    document.getElementById("protectedContent").style.display = "block";
-                })
-                .catch((error) => {
-                    alert(error.message); // Afficher le message d'erreur
-                });
-        }
-    </script>
     <style>
         #protectedContent {
             display: none; /* Cacher le contenu protégé par défaut */
+        }
+        #loginForm {
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -66,7 +31,7 @@
     <h2>Connexion</h2>
     <input type="email" id="email" placeholder="Email" required>
     <input type="password" id="password" placeholder="Mot de passe" required>
-    <button onclick="login()">Se connecter</button>
+    <button id="loginButton">Se connecter</button>
 </section>
 
 <section id="protectedContent">
@@ -81,9 +46,9 @@
         <li><strong>Accessibilité :</strong> Le Wi-Fi doit être accessible depuis n'importe quel appareil disposant d'une antenne Wi-Fi.</li>
         <li><strong>Règles :</strong>
             <ul>
-                <li>Ne pas générer d’interférences avec des services autorisés tels que les radars de prévision d’intempéries pour la météorologie nationale.</li>
-                <li>Limiter la puissance maximale des antennes, ne pas utiliser en extérieur les fréquences basses de la bande 5 GHz.</li>
-                <li>Employer des équipements conformes à <a href="https://www.lne.fr/fr/service/essais/essais-selon-directive-red#:" target="_blank">la directive européenne 2014/53/UE </a>.</li>
+                <li>Ne pas générer d’interférences avec des services autorisés.</li>
+                <li>Limiter la puissance maximale des antennes.</li>
+                <li>Employer des équipements conformes à <a href="https://www.lne.fr/fr/service/essais/essais-selon-directive-red#:" target="_blank">la directive européenne 2014/53/UE</a>.</li>
                 <li>Selon la loi Abeille, « les établissements proposant au public un accès Wi-Fi doivent le mentionner clairement au moyen d’un pictogramme à l’entrée de l’établissement ».</li>
                 <li>Il faut également respecter des valeurs limites d’exposition du public aux champs électromagnétiques.</li>
             </ul>
@@ -117,6 +82,9 @@
     <h2>Pour plus d'informations</h2>
     <p>Pour toute question ou suggestion, veuillez contacter notre service à l'adresse e-mail suivante : <a href="mailto:contact@exemple.com">contact@exemple.com</a>.</p>
 </section>
+
+<!-- Ajouter le lien vers le fichier JavaScript -->
+<script src="script.js" type="module"></script>
 
 </body>
 </html>
