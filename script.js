@@ -29,7 +29,7 @@ function login() {
     signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             // Connexion réussie, redirige vers next.html
-            window.location.href = "next.html";  // Redirection vers next.html
+            window.location.href = "next.html";  
         })
         .catch((error) => {
             alert(error.message); // Afficher le message d'erreur
