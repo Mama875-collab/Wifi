@@ -33,17 +33,4 @@
             });
         });
 
-   const pdfFrame = document.getElementById("pdfFrame");
-        const reduceButton = document.getElementById("reduceButton");
-        const enlargeButton = document.getElementById("enlargeButton");
-
-        // Fonction pour réduire la taille de l'iframe
-        reduceButton.addEventListener("click", () => {
-            pdfFrame.style.height = "200px"; // Réduire la hauteur
-        });
-
-        // Fonction pour agrandir la taille de l'iframe
-        enlargeButton.addEventListener("click", () => {
-            pdfFrame.style.height = "600px"; // Augmenter la hauteur
-        });
 
