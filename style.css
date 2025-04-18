@@ -14,6 +14,10 @@ header {
 
 nav {
     margin: 15px 0;
+    position: sticky; /* Définit la position sticky */
+    top: 0; /* Positionne la barre en haut de la page */
+    z-index: 1000; /* Assure que la barre reste au-dessus des autres éléments */
+
 }
 
 nav ul {
