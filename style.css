@@ -1,300 +1,68 @@
-/* Général */
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: Arial, sans-serif;
     margin: 0;
-    background-color: #f4f7f6; /* Couleur de fond plus douce */
-    color: #333; /* Couleur de texte par défaut */
-    line-height: 1.6; /* Espacement des lignes amélioré */
+    padding: 20px;
+    background-color: #f4f4f4;
 }
 
-.container {
-    max-width: 1200px; /* Largeur maximale du contenu */
-    margin: 0 auto; /* Centrer le contenu */
-    padding: 0 20px; /* Espacement intérieur */
-    box-sizing: border-box; /* S'assure que le padding est inclus dans la largeur */
-}
-
-/* Header */
 header {
-    background: linear-gradient(to right, #007BFF, #0056b3); /* Dégradé pour l'en-tête */
+    background-color: #007BFF;
     color: white;
-    padding: 20px 0; /* Espacement intérieur */
+    padding: 10px 0;
     text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Ombre légère */
-}
-
-header h1 {
-    margin: 0;
-    font-size: 2.5em; /* Taille de titre plus grande */
 }
 
 nav {
-    margin-top: 15px;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background-color: #0056b3; /* Couleur de fond pour la navigation sticky */
-    padding: 10px 0; /* Espacement intérieur */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    margin: 15px 0;
+    position: sticky; /* Définit la position sticky */
+    top: 0; /* Positionne la barre en haut de la page */
+    z-index: 1000; /* Assure que la barre reste au-dessus des autres éléments */
+
 }
 
 nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex; /* Aligner les éléments horizontalement */
-    justify-content: center; /* Centrer les éléments */
-    flex-wrap: wrap; /* Permettre le retour à la ligne sur petits écrans */
+    list-style-type: none; 
+    padding: 0; 
 }
 
 nav li {
-    margin: 5px 15px; /* Espacement entre les éléments */
+    display: inline-block; 
+    margin: 0 15px; 
 }
 
 nav a {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    transition: color 0.3s ease; /* Transition douce au survol */
 }
 
 nav a:hover {
-    color: #a0d2eb; /* Couleur au survol */
     text-decoration: underline;
 }
 
-/* Sections de contenu */
-.section-content {
-    margin: 30px auto; /* Centrer la section et ajouter de l'espace */
-    max-width: 1200px; /* S'assurer que la section ne dépasse pas la largeur du conteneur principal */
-    padding: 30px;
+section {
+    margin: 20px 0;
+    padding: 20px;
     background-color: white;
-    border-radius: 8px; /* Coins arrondis */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombre plus marquée */
-    box-sizing: border-box; /* S'assure que le padding est inclus dans la largeur */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.section-content h2 {
-    color: #007BFF; /* Couleur du titre de section */
-    border-bottom: 2px solid #007BFF; /* Ligne sous le titre */
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-    font-size: 2em;
+h2 {
+    color: #333;
 }
 
-.section-content h3 {
-    color: #555; /* Couleur des sous-titres */
-    margin-top: 25px;
-    margin-bottom: 15px;
-    font-size: 1.5em;
-}
-
-.section-content p {
-    margin-bottom: 15px;
-}
-
-.section-content ul {
+    iframe {
+            width: 100%; /* Largeur par défaut */
+            height: 400px; /* Hauteur par défaut */
+            border: none; /* Enlève la bordure */
+            transition: all 0.3s; /* Transition douce lors du changement de taille */
+        }
+ul {
     list-style-type: disc;
-    padding-left: 25px;
-    margin-bottom: 15px;
+    padding-left: 20px;
 }
 
-.section-content li {
-    margin-bottom: 8px;
-}
-
-.section-content a {
-    color: #007BFF;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.section-content a:hover {
-    text-decoration: underline;
-    color: #0056b3;
-}
-
-/* Images (galeries par défaut qui s'enroulent) */
-.image-gallery {
-    display: flex; /* Afficher les images côte à côte */
-    flex-wrap: wrap; /* Permettre le retour à la ligne */
-    gap: 20px; /* Espacement entre les images */
-    margin-bottom: 20px;
-}
-
-.image-gallery img {
-    max-width: 100%; /* Assurer que les images ne dépassent pas leur conteneur */
-    height: auto;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    /* Ajouté pour mieux gérer la taille dans flexbox - c'était déjà dans la version précédente */
-    flex: 1 1 auto; /* Permet aux images de grandir et rétrécir */
-    min-width: 150px; /* Largeur minimale indicative avant de passer à la ligne */
-}
-
-
-/* Caractéristiques des antennes */
-.antenna-section {
-    margin-bottom: 30px;
-    padding: 20px;
-    background-color: #e9ecef; /* Couleur de fond pour les sections d'antennes */
-    border-radius: 5px;
-}
-
-.antenna-details {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    align-items: center;
-}
-
-.antenna-details ul {
-    flex: 1; /* Permettre à la liste de prendre l'espace disponible */
-    min-width: 250px; /* Largeur minimale avant de passer à la ligne */
-    margin-bottom: 0; /* Enlever la marge du bas si aligné */
-}
-
-.antenna-details img {
-    max-width: 200px; /* Taille maximale pour les images d'antennes */
-    height: auto;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Carte */
-.map-container {
-    position: relative;
-    overflow: hidden;
-    padding-top: 56.25%; /* Ratio 16:9 pour l'iframe */
-    margin-bottom: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.map-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-}
-
-/* Liste des solutions */
-.solution-list {
-    list-style-type: none; /* Enlever les puces par défaut */
-    padding: 0;
-}
-
-.solution-list li {
-    margin-bottom: 30px;
-    border: 1px solid #ccc; /* Bordure légère */
-    padding: 20px;
-    border-radius: 5px;
-    background-color: #f8f9fa; /* Couleur de fond pour chaque solution */
-    box-sizing: border-box; /* Ajouté pour gérer le padding */
-}
-
-.solution-list li h3 {
-    margin-top: 0;
-    color: #007BFF;
-}
-
-.solution-list li ul {
-    list-style-type: disc;
-    padding-left: 25px;
-}
-
-/* Images de prix directes dans les sections (comme Prix2.png, Prix4.1.png, Prix4.2.png, Choiseau_4_2.png, etc.) */
-/* Ces images n'étaient pas dans une .image-gallery dans la version originale */
-.section-content > img { /* Cibler les images directement enfants de .section-content */
-    max-width: 100%; /* Limite la largeur de l'image à celle du conteneur parent */
-    height: auto; /* Maintient le ratio d'aspect */
-    display: block; /* Aide à gérer l'espace blanc sous l'image */
-    margin: 20px auto; /* Centre l'image et ajoute de l'espace */
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box; /* Inclure padding/border si présents */
-}
-
-
-/* PDF Viewer */
-.pdf-viewer {
-    margin-bottom: 20px;
-}
-
-.pdf-viewer iframe {
-    width: 100%;
-    height: 600px; /* Hauteur fixe pour les iframes PDF */
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.download-link {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 10px 15px;
-    background-color: #28a745; /* Bouton vert */
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.download-link:hover {
-    background-color: #218838;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    header h1 {
-        font-size: 1.8em;
-    }
-
-    nav ul {
-        flex-direction: column; /* Empiler les éléments de navigation */
-        align-items: center; /* Centrer les éléments */
-    }
-
-    nav li {
-        margin: 5px 0; /* Espacement vertical */
-    }
-
-    .section-content {
-        padding: 20px;
-    }
-
-    .section-content h2 {
-        font-size: 1.6em;
-    }
-
-    .section-content h3 {
-        font-size: 1.3em;
-    }
-
-    .antenna-details {
-        flex-direction: column; /* Empiler les détails d'antenne */
-        align-items: flex-start; /* Aligner à gauche */
-    }
-
-    .antenna-details ul {
-        min-width: auto; /* Enlever la largeur minimale */
-        margin-bottom: 20px;
-    }
-
-    .pdf-viewer iframe {
-        height: 400px; /* Réduire la hauteur des iframes PDF sur petits écrans */
-    }
-
-    /* Ajuste les images directes dans les sections sur petits écrans */
-    .section-content > img {
-        max-width: 100%; /* S'assurer qu'elles ne dépassent pas */
-    }
-}
-
-/* Règle générale pour toutes les images */
-img {
-    max-width: 100%;
-    height: auto;
-    box-sizing: border-box; /* Important pour toutes les images */
+li {
+    margin-bottom: 10px;
 }
