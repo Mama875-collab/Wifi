@@ -4,187 +4,217 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projet Wi-Fi Public</title>
-	<link rel="icon" type="image/png" href="im/logo.png">
+    <link rel="icon" type="image/png" href="im/logo.png">
     <link rel="stylesheet" href="style.css">
     <script type="module" src="auth.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 <header>
-    <h1>Projet d'Installation d'un Wi-Fi Public</h1>
-    <nav>
-        <ul>
-            <li><a href="#ch">Cahier des charges</a></li>
-            <li><a href="#car">Caractéristiques des appareils mis en place</a></li>
-            <li><a href="#loc">Localisation des sites</a></li>
-			<li><a href="#dist">Distances des sites</a></li>
-			<li><a href="#prof">Propositions d'idées</a></li>
-			<li><a href="#solpdf">Démonstration des propositions</a></li>
-        </ul>
-    </nav>
+    <div class="container">
+        <h1>Projet d'Installation d'un Wi-Fi Public</h1>
+        <nav>
+            <ul>
+                <li><a href="#cahier-des-charges">Cahier des charges</a></li>
+                <li><a href="#caracteristiques">Caractéristiques des appareils</a></li>
+                <li><a href="#localisation">Localisation des sites</a></li>
+                <li><a href="#distances">Distances des sites</a></li>
+                <li><a href="#propositions">Propositions d'idées</a></li>
+                <li><a href="#demonstrations">Démonstration des propositions</a></li>
+            </ul>
+        </nav>
+    </div>
 </header>
 
+<main class="container">
+    <section id="cahier-des-charges" class="section-content">
+        <h2>Cahier des Charges</h2>
+        <p>Ce cahier des charges définit les exigences et spécifications pour l'installation d'un réseau Wi-Fi public dans notre territoire. Les éléments suivants doivent être respectés :</p>
+        <ul>
+            <li><strong>Nombre d'utilisateurs :</strong> 50 utilisateurs en simultané sur le réseau.</li>
+            <li><strong>Équipements utilisés :</strong> Utilisation du pack CloudSpot de type <a href="https://www.cloudspot.fr/solutions-wifi/nano" target="_blank">Nano</a>.</li>
+            <li><strong>Emplacement :</strong> Définir les emplacements des émetteurs du Wi-Fi.</li>
+            <li><strong>Formulaire de connexion :</strong> Similaire au style du Wi-Fi4EU (Nom, Prénom et plus de 15 ans).</li>
+            <li><strong>Après la connexion :</strong> Les utilisateurs seront renvoyés sur le portail des actualités de Château-Gontier-Sur-Mayenne.</li>
+            <li><strong>Accessibilité :</strong> Le Wi-Fi doit être accessible depuis n'importe quel appareil disposant d'une antenne Wi-Fi.</li>
+            <li><strong>Règles :</strong>
+                <ul>
+                    <li>Ne pas générer d’interférences avec des services autorisés.</li>
+                    <li>Limiter la puissance maximale des antennes, ne pas utiliser en extérieur les fréquences basses de la bande 5 GHz.</li>
+                    <li>Employer des équipements conformes à <a href="https://www.lne.fr/fr/service/essais/essais-selon-directive-red#:" target="_blank">la directive européenne 2014/53/UE</a>.</li>
+                    <li>Selon la loi Abeille, « les établissements proposant au public un accès Wi-Fi doivent le mentionner clairement au moyen d’un pictogramme à l’entrée de l’établissement ».</li>
+                    <li>Il faut également respecter des valeurs limites d’exposition du public aux champs électromagnétiques.</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
 
-<section id="ch">
-    <h2>Cahier des Charges</h2>
-    <p>Ce cahier des charges définit les exigences et spécifications pour l'installation d'un réseau Wi-Fi public dans notre territoire. Les éléments suivants doivent être respectés :</p>
-    <ul>
-        <li><strong>Nombre d'Utilisateur :</strong> 50 utilisateurs en simultanés sur le réseau</li>
-        <li><strong>Équipements Utilisés :</strong> utilisation du pack de CloudSpot de type <a href="https://www.cloudspot.fr/solutions-wifi/nano" target="_blank">Nano</a></li>
-        <li><strong>Emplacement :</strong> Définir les emplacements des émetteurs du Wi-Fi</li>
-        <li><strong>Formulaire de connexion :</strong> Un peu comme le même style que le Wi-Fi4EU (Nom, Prénom et plus de 15 ans)</li>
-        <li><strong>Après la connexion :</strong> Les utilisateurs seront renvoyés sur le portail des actualités de Château-Gontier-Sur-Mayenne</li>
-        <li><strong>Accessibilité :</strong> Le Wi-Fi doit être accessible depuis n'importe quel appareil disposant d'une antenne Wi-Fi.</li>
-        <li><strong>Règles :</strong>
-            <ul>
-                <li>Ne pas générer d’interférences avec des services autorisés.</li>
-                <li>Limiter la puissance maximale des antennes,ne pas utiliser en extérieur les fréquences basses de la bande 5 GHz.</li>
-                <li>Employer des équipements conformes à <a href="https://www.lne.fr/fr/service/essais/essais-selon-directive-red#:" target="_blank">la directive européenne 2014/53/UE</a>.</li>
-                <li>Selon la loi Abeille, « les établissements proposant au public un accès Wi-Fi doivent le mentionner clairement au moyen d’un pictogramme à l’entrée de l’établissement ».</li>
-                <li>Il faut également respecter des valeurs limites d’exposition du public aux champs électromagnétiques.</li>
-            </ul>
-        </li>
-    </ul>
-</section>
+    <section id="caracteristiques" class="section-content">
+        <h2>Caractéristiques des appareils mis en place</h2>
+        <h3>Routeur hAP ax² de CloudSpot</h3>
+        <p>Pour commencer, le routeur mis en place par CloudSpot dans la solution Nano est le <a href="https://mikrotik.com/product/hap_ax2#fndtn-specifications" target='blank'>hAP ax²</a> avec ces caractéristiques :</p>
+        <div class="image-gallery">
+            <img src="im/car_hap.png" alt="Caractéristiques du routeur hAP ax² - partie 1">
+            <img src="im/car2_hap.png" alt="Caractéristiques du routeur hAP ax² - partie 2">
+        </div>
+        <p>Le routeur a une antenne Wi-Fi intégrée, mais pour un souci de manque d'options de configurations et d'autres finalités, nous allons utiliser des antennes UniFi.</p>
+        <h2>Caractéristiques des antennes UniFi</h2>
 
-<section id="car" >
-    <h2>Caractéristiques du pack Nano de CloudSpot</h2>
-    <p>Pour commencer le routeur mis en place par CloudSpot dans la solution Nano est le <a href="https://mikrotik.com/product/hap_ax2#fndtn-specifications" target='blank'>hAP ax²</a> avec ces caractéristiques :</h3>
-    <img src="im/car_hap.png">
-    <img src="im/car2_hap.png">
-	<p>Le routeur a une antenne wifi intégrée, mais pour un soucis de manque d'options de configurations et d'autres finalitées, nous allons utiliser des antennes UniFi</p>
-	<h2>Caractéristiques des antennes UniFi</h2>
-	
-		<h3>Pour la solution 1 et 4_1 les caractéristiques de l'antenne <a href="https://uk.store.ui.com/uk/en/category/wifi-outdoor/products/u6-mesh">UniFi U6 Mesh</a>. Les caractéristiques qui nous intéresse sont ;</h3>
-		<ul>
-		<li> Prix : 188.80 €</li>
-		<li> Nombre maximal de clients de plus de 300</li>
-		<li> Montage mural inclus + 48V DC, 0.32A GbE PoE adaptateur</li>
-		<li> Puissance d'émission d'antenne, pour la bande 5GHz 26dBm et 22 dBm pour la bande 2.4GHz</li>
-		<li> Consommation électrique maxiamle de 13W</li>
-		<li> Température de fonctionnement -30° à 60°C</li>
-		<img src="im/U6Mesh.png">
-		</ul>
-		<h3>Pour la solution 2, les caractéristiques de l'antenne <a href="https://uk.store.ui.com/uk/en/products/uap-flexhd">Flex HD</a> avec ces caractéristiques : </h3>
-		<ul>
-		<li> Prix : 177.83 €</li>
-		<li> Nombre maximal de clients de plus de 200</li>
-		<li> Puissance d'émission d'antenne, pour la bande 5GHz 26dBm et 23 dBm pour la bande 2.4GHz</li>
-		<li> Consommation électrique maxiamle de 10.5W</li>
-		<li> Température de fonctionnement -30° à 70°C</li>
-		<img src="im/Flex_HD.png">
-		</ul>
-		<h3>Pour la solution 3 et 4_2, les caractéristiques de l'antenne <a href="https://uk.store.ui.com/uk/en/products/u7-pro">U7 Pro</a> avec ces caractéristiques : </h3>
-		<ul>
-		<li> Prix : 190.58 €</li>
-		<li> Nombre maximal de clients de plus de 300</li>
-		<li> Puissance d'émission d'antenne, pour la bande 6GHz 23 dBm, puis 26dBm pour la 5GHz  et 22 dBm pour la bande 2.4GHz</li>
-		<li> Consommation électrique maxiamle de 21W</li>
-		<li> Température de fonctionnement -30° à 40°C</li>
-		<img src="im/U7_Pro.png">
-		</ul>
-</section>
+        <div class="antenna-section">
+            <h3>Antenne <a href="https://uk.store.ui.com/uk/en/category/wifi-outdoor/products/u6-mesh" target="_blank">UniFi U6 Mesh</a> (Solutions 1 et 4_1)</h3>
+            <div class="antenna-details">
+                <ul>
+                    <li> Prix : 188.80 €</li>
+                    <li> Nombre maximal de clients : plus de 300</li>
+                    <li> Montage mural inclus + adaptateur PoE GbE 48V DC, 0.32A</li>
+                    <li> Puissance d'émission d'antenne : 26 dBm pour la bande 5 GHz et 22 dBm pour la bande 2.4 GHz</li>
+                    <li> Consommation électrique maximale : 13W</li>
+                    <li> Température de fonctionnement : -30° à 60°C</li>
+                </ul>
+                <img src="im/U6Mesh.png" alt="Antenne UniFi U6 Mesh">
+            </div>
+        </div>
 
-<section id="loc">
-    <h2>Localisation du Service</h2>
-    <p>Veuillez consulter la carte ci-dessous pour voir les emplacements prévus pour les points d'accès Wi-Fi :</p>
-    <iframe src="https://www.google.com/maps/d/embed?mid=12rHeRUxFiid_xNG9k4QP8lsHKeDLIAs&ehbc=2E312F&noprof=1" width="640" height="480"></iframe>
-</section>
+        <div class="antenna-section">
+            <h3>Antenne <a href="https://uk.store.ui.com/uk/en/products/uap-flexhd" target="_blank">Flex HD</a> (Solution 2)</h3>
+            <div class="antenna-details">
+                <ul>
+                    <li> Prix : 177.83 €</li>
+                    <li> Nombre maximal de clients : plus de 200</li>
+                    <li> Puissance d'émission d'antenne : 26 dBm pour la bande 5 GHz et 23 dBm pour la bande 2.4 GHz</li>
+                    <li> Consommation électrique maximale : 10.5W</li>
+                    <li> Température de fonctionnement : -30° à 70°C</li>
+                </ul>
+                <img src="im/Flex_HD.png" alt="Antenne UniFi Flex HD">
+            </div>
+        </div>
 
-<section id="dist">
-<h2>Distances des sites d'installations des antennes</h2>
-<p>La distance la plus longue théorique de cette installation est d'environ 125 m. Du point le plus éloigné de la Mairie, du point le plus éloigné de l'espace Vulcain</p>
-<img src="im/car_dist.png">
-</section>
+        <div class="antenna-section">
+            <h3>Antenne <a href="https://uk.store.ui.com/uk/en/products/u7-pro" target="_blank">U7 Pro</a> (Solutions 3 et 4_2)</h3>
+            <div class="antenna-details">
+                <ul>
+                    <li> Prix : 190.58 €</li>
+                    <li> Nombre maximal de clients : plus de 300</li>
+                    <li> Puissance d'émission d'antenne : 23 dBm pour la bande 6 GHz, 26 dBm pour la bande 5 GHz et 22 dBm pour la bande 2.4 GHz</li>
+                    <li> Consommation électrique maximale : 21W</li>
+                    <li> Température de fonctionnement : -30° à 40°C</li>
+                </ul>
+                <img src="im/U7_Pro.png" alt="Antenne UniFi U7 Pro">
+            </div>
+        </div>
+    </section>
 
-<section id="prof">
-<h2>Propositions de fonctionnement</h2>
-<ol>
-<li>Première Solution
-<p>Les antennes sont diposées dehors et se fournissent entre-elles le réseau wifi (Comme la disposition au camping de Daon). Cette solution permettrai de n'avoir besoin que  un pack Nano et de 5 antennes UniFi, pour autant elle a des désavantages ;</p>
-<p>- Dégradations plus importantes dehors dû aux Intempéries</p>
-<p>- Des réglementations à respecter vis-à-vis des fréquences utilisées et de la puissance maximale autorisée (100Mv) </p>
-</li>
+    <section id="localisation" class="section-content">
+        <h2>Localisation des sites</h2>
+        <p>Veuillez consulter la carte ci-dessous pour voir les emplacements prévus pour les points d'accès Wi-Fi :</p>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/d/embed?mid=12rHeRUxFiid_xNG9k4QP8lsHKeDLIAs&ehbc=2E312F&noprof=1" width="640" height="480" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
 
-<li>Deuxième Solution
-<p>Les antennes seraient reliées entre-elles à l'aide d'un câble Ethernet. Les antennes seront à l'intérieure du batiment, donc non exposées aux intempéries. Cette solution aurait donc, un pack Nano , 6 antennes UniFi ainsi que de 2 switch, pour autant elle a des désavantages ;</p>
-<p>- Compliqué de faire passer des câbles entre les batiments, où communiquent-ils déjà ?</p>
-<p>- Des Switch suplémentaires, la solution sera plus onéreuse</p>
-</li>
+    <section id="distances" class="section-content">
+        <h2>Distances des sites d'installations des antennes</h2>
+        <p>La distance théorique la plus longue de cette installation est d'environ 125 m, entre le point le plus éloigné de la Mairie et le point le plus éloigné de l'espace Vulcain.</p>
+        <img src="im/car_dist.png" alt="Schéma des distances entre les sites">
+    </section>
 
-<li>Troisème Solution
-<p> Comme la solution une, mais en disposant les antennes à l'intérieure, cette solution aurait la même composition que la solution une,  elle a presque les même désavantages que cette solution, tel que ;  </p>
-<p> - Perte du signal au fur et à mesure, puisque celle-ci seraient à l'interieure, donc le signal aura plus de mal à passer en exérieure</p>
-<p> - Dû a l'épaisseur des murs le signal perdrai en qualité au fil des retransimitions  </p>
-</li>
+    <section id="propositions" class="section-content">
+        <h2>Propositions de fonctionnement</h2>
+        <ol class="solution-list">
+            <li>
+                <h3>Première Solution</h3>
+                <p>Les antennes sont disposées à l'extérieur et se fournissent le réseau Wi-Fi entre elles (comme la disposition au camping de Daon). Cette solution nécessiterait un pack Nano et 5 antennes UniFi. Cependant, elle présente des désavantages :</p>
+                <ul>
+                    <li>Dégradations plus importantes à l'extérieur dues aux intempéries.</li>
+                    <li>Réglementations strictes à respecter concernant les fréquences utilisées et la puissance maximale autorisée (100 mW).</li>
+                </ul>
+            </li>
 
-<li>Quatrième Solution
-<p> Cette solution mélange à la fois la solution une et la deux, celle-ci consiste à brancher la Mairie et la salle du conseil</p>
-<p> Cette solution aura donc besoin du Pack Nano, 5 antennes et un switch. Mais il y a aussi une façon de faire ;</p>
-<p>- Option 1 : Les antennes sont disposées dehors (on connait désormais leurs désavantages)</p>
-<p>- Option 2 : Les antennes snt disposées à l'interieure (on connait désormais leurs désavantages), cette solution demande un switch supplémentaire</p>
-</li>
+            <li>
+                <h3>Deuxième Solution</h3>
+                <p>Les antennes seraient reliées entre elles à l'aide d'un câble Ethernet. Les antennes seraient à l'intérieur des bâtiments, donc non exposées aux intempéries. Cette solution nécessiterait un pack Nano, 6 antennes UniFi ainsi que 2 switchs. Cependant, elle présente des désavantages :</p>
+                <ul>
+                    <li>Complexité pour faire passer des câbles entre les bâtiments (où communiquent-ils déjà ?).</li>
+                    <li>Des switchs supplémentaires, la solution serait plus onéreuse.</li>
+                </ul>
+            </li>
 
-</ol>
+            <li>
+                <h3>Troisième Solution</h3>
+                <p>Similaire à la première solution, mais en disposant les antennes à l'intérieur. Cette solution aurait la même composition que la solution une, mais présente presque les mêmes désavantages, tels que :</p>
+                <ul>
+                    <li>Perte du signal au fur et à mesure, puisque celles-ci seraient à l'intérieur, donc le signal aurait plus de mal à passer à l'extérieur.</li>
+                    <li>Due à l'épaisseur des murs, le signal perdrait en qualité au fil des retransmissions.</li>
+                </ul>
+            </li>
 
-</section>
+            <li>
+                <h3>Quatrième Solution</h3>
+                <p>Cette solution mélange la première et la deuxième solution. Elle consiste à brancher la Mairie et la salle du conseil.</p>
+                <p>Cette solution nécessiterait donc le Pack Nano, 5 antennes et un switch. Il y a également deux options :</p>
+                <ul>
+                    <li><strong>Option 1 :</strong> Les antennes sont disposées dehors (on connaît désormais leurs désavantages).</li>
+                    <li><strong>Option 2 :</strong> Les antennes sont disposées à l'intérieur (on connaît désormais leurs désavantages). Cette solution demande un switch supplémentaire.</li>
+                </ul>
+            </li>
+        </ol>
+    </section>
 
-<section id="solpdf">
-<h2>Les solutions en évidence avec un pdf et une représentation graphique du signal</h2>
-<p>Attention, ces simulations ont été effectuées en considérant que tout les murs des bâtiments aient un dB maximale de 15dB</p>
-<ol>
+    <section id="demonstrations" class="section-content">
+        <h2>Démonstration des propositions</h2>
+        <p>Attention, ces simulations ont été effectuées en considérant que tous les murs des bâtiments aient un affaiblissement maximal de 15 dB.</p>
+        <ol class="solution-list">
+            <li>
+                <h3>Solution 1</h3>
+                <div class="pdf-viewer">
+                    <iframe src="simulation/Solution_1.pdf" title="Démonstration Solution 1"></iframe>
+                    <p><a href="simulation/Solution_1.pdf" download class="download-link">Télécharger le PDF</a></p>
+                </div>
+            </li>
 
-<li > Solution 1
+            <li>
+                <h3>Solution 2</h3>
+                 <div class="pdf-viewer">
+                    <iframe src="simulation/Solution2/Solution_2.pdf" title="Démonstration Solution 2"></iframe>
+                    <p><a href="simulation/Solution2/Solution_2.pdf" download class="download-link">Télécharger le PDF</a></p>
+                </div>
+                <img src="simulation/Solution2/prix2.png" alt="Estimation du prix Solution 2">
+            </li>
 
-<iframe src="simulation/Solution_1.pdf" style="width: 100%; height: 600px;" frameborder="0"></iframe>
+            <li>
+                <h3>Solution 3</h3>
+                <div class="pdf-viewer">
+                    <iframe src="simulation/Solution_3.pdf" title="Démonstration Solution 3"></iframe>
+                    <p><a href="simulation/Solution_3.pdf" download class="download-link">Télécharger le PDF</a></p>
+                </div>
+            </li>
 
-        <!-- Lien pour télécharger le PDF -->
-        <p><a href="simulation/Solution_1.pdf" download>Télécharger le PDF</a></p>
+            <li>
+                <h3>Solution 4</h3>
+                <p><strong>- Option 1</strong></p>
+                <div class="pdf-viewer">
+                    <iframe src="simulation/Solution4/Opt1/Solution_4_1.pdf" title="Démonstration Solution 4 Option 1"></iframe>
+                    <p><a href="simulation/Solution4/Opt1/Solution_4_1.pdf" download class="download-link">Télécharger le PDF</a></p>
+                </div>
+                <img src="simulation/Solution4/Opt1/Prix4.1.png" alt="Estimation du prix Solution 4 Option 1">
 
-</li>
+                <p><strong>- Option 2</strong></p>
+                 <div class="pdf-viewer">
+                    <iframe src="simulation/Solution4/Opt2/Solution_4_2.pdf" title="Démonstration Solution 4 Option 2"></iframe>
+                    <p><a href="simulation/Solution4/Opt2/Solution_4_2.pdf" download class="download-link">Télécharger le PDF</a></p>
+                </div>
+                <div class="image-gallery">
+                    <img src="simulation/Solution4/Opt2/Prix_4.2.png" alt="Estimation du prix Solution 4 Option 2">
+                    <img src="simulation/Solution4/Opt2/Choiseau_4_2.png" alt="Représentation graphique du signal - Choiseau">
+                    <img src="simulation/Solution4/Opt2/Conseil_4_2.png" alt="Représentation graphique du signal - Conseil">
+                    <img src="simulation/Solution4/Opt2/Fournil_4_2.png" alt="Représentation graphique du signal - Fournil">
+                    <img src="simulation/Solution4/Opt2/Vulcain_4_2.png" alt="Représentation graphique du signal - Vulcain">
+                    <img src="simulation/Solution4/Opt2/Mairie_4_2.png" alt="Représentation graphique du signal - Mairie">
+                </div>
+            </li>
+        </ol>
+    </section>
+</main>
 
-<li > Solution 2
-<iframe src="simulation/Solution2/Solution_2.pdf" style="width: 100%; height: 600px;" frameborder="0"></iframe>
-
-        <!-- Lien pour télécharger le PDF -->
-        <p><a href="simulation/Solution2/Solution_2.pdf" download>Télécharger le PDF</a></p>
-<img src="simulation/Solution2/prix2.png">
-
-</li>
-
-<li > Solution 3
-<p> La solution 3</p>
-
-<iframe src="simulation/Solution_3.pdf" style="width: 100%; height: 600px;" frameborder="0"></iframe>
-
-        <!-- Lien pour télécharger le PDF -->
-        <p><a href="simulation/Solution_3.pdf" download>Télécharger le PDF</a></p>
-</li>
-
-<li > Solution 4
-<p>-Option 1</p>
-<iframe src="simulation/Solution4/Opt1/Solution_4_1.pdf" style="width: 100%; height: 600px;" frameborder="0"></iframe>
-
-        <!-- Lien pour télécharger le PDF -->
-        <p><a href="simulation/Solution4/Opt1/Solution_4_1.pdf" download>Télécharger le PDF</a></p>
-<img src="simulation/Solution4/Opt1/Prix4.1.png">
-
-
-<p>-Option 2</p>
-
-<iframe src="simulation/Solution4/Opt2/Solution_4_2.pdf" style="width: 100%; height: 600px;" frameborder="0"></iframe>
-
-        <!-- Lien pour télécharger le PDF -->
-        <p><a href="simulation/Solution_4_1.pdf" download>Télécharger le PDF</a></p>
-<img src="simulation/Solution4/Opt2/Prix_4.2.png">
-<img src="simulation/Solution4/Opt2/Choiseau_4_2.png">
-<img src="simulation/Solution4/Opt2/Conseil_4_2.png">
-<img src="simulation/Solution4/Opt2/Fournil_4_2.png">
-<img src="simulation/Solution4/Opt2/Vulcain_4_2.png">
-<img src="simulation/Solution4/Opt2/Mairie_4_2.png">
-
-</li>
-
-</ol>
-</section>
 </body>
 </html>
