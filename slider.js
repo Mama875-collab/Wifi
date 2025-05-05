@@ -88,28 +88,4 @@ document.addEventListener('DOMContentLoaded', () => {
         //     moveToSlide(currentIndex + 1);
         // }, 5000); // Change d'image toutes les 5 secondes (5000ms)
     });
-    // Dans slider.js, à l'intérieur de document.addEventListener('DOMContentLoaded', () => { ... });
-
-    // ... (ton code existant pour le slider) ...
-
-    // --- Bouton Retour en Haut ---
-    const backToTopButton = document.getElementById('back-to-top');
-
-    // Afficher le bouton lorsque l'utilisateur défile
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) { // Affiche le bouton après 300px de défilement vertical
-            backToTopButton.style.display = 'block';
-        } else {
-            backToTopButton.style.display = 'none';
-        }
-    });
-
-    // Faire défiler la page vers le haut en douceur au clic
-    backToTopButton.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0, // Défile vers le haut de la page
-            behavior: 'smooth' // Animation de défilement douce
-        });
-    });
-}); // Fin du document.addEventListener('DOMContentLoaded' ...
 });
