@@ -192,7 +192,6 @@ nav a:hover {
     border-radius: 5px;
     background-color: #f8f9fa; /* Couleur de fond pour chaque solution */
     box-sizing: border-box; /* S'assurer que le padding est inclus */
-    /* overflow: hidden; /* Retire ceci si tu utilises le slider à la place */
     width: 100%; /* S'assurer que le li prend toute la largeur disponible */
 }
 
@@ -250,25 +249,30 @@ nav a:hover {
 .slider-container {
     position: relative;
     width: 100%;
-    max-width: 800px; /* Ajuste la largeur maximale du slider */
+    /* Augmente la largeur maximale ici pour des images plus grandes */
+    max-width: 1000px; /* Exemple : passe de 800px à 1000px */
     margin: 30px auto;
     overflow: hidden;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* Optionnel: ajoute une hauteur minimale si tu veux que le conteneur ne "saute" pas */
+    /* min-height: 500px; /* Ajuste cette valeur en fonction de la hauteur typique de tes images */
 }
 
 .slider {
     display: flex;
     transition: transform 0.5s ease-in-out;
     width: 100%;
-    height: auto;
+    height: auto; /* Laisse la hauteur s'adapter par défaut */
 }
 
 .slider img {
     width: 100%; /* Chaque image prend 100% de la largeur du conteneur visible */
-    height: auto;
+    height: auto; /* Laisse la hauteur s'adapter par défaut */
     flex-shrink: 0;
-    object-fit: cover; /* Recadre l'image */
+    /* Optionnel : Si tes images ont des ratios d'aspect très différents et que tu veux une hauteur plus uniforme */
+    /* height: 500px; /* Définit une hauteur fixe (ajuste selon tes besoins) */
+    /* object-fit: contain; /* ou 'cover' - Choisis l'un si tu utilises une hauteur fixe */
 }
 
 .slider-container .prev-btn,
@@ -373,12 +377,23 @@ nav a:hover {
         max-width: 100%; /* S'assurer qu'elles ne dépassent pas */
     }
 
+     /* Ajuste la largeur maximale du slider sur petits écrans */
+    .slider-container {
+        max-width: 100%; /* Généralement 100% sur petits écrans */
+    }
+
      /* Ajuste la taille des boutons du slider sur petits écrans */
     .slider-container .prev-btn,
     .slider-container .next-btn {
         padding: 8px 12px;
         font-size: 1.2em;
     }
+
+    /* Si tu as défini une hauteur fixe pour les images, ajuste-la pour les petits écrans */
+    /* .slider img {
+        height: 300px; /* Hauteur réduite pour les petits écrans */
+        /* object-fit: contain; /* ou 'cover' */
+    /* } */
 }
 
 /* Règle générale pour toutes les images */
