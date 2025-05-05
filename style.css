@@ -11,11 +11,12 @@ body {
     max-width: 1200px; /* Largeur maximale du contenu */
     margin: 0 auto; /* Centrer le contenu */
     padding: 0 20px; /* Espacement intérieur */
+    box-sizing: border-box; /* S'assure que le padding est inclus dans la largeur */
 }
 
 /* Header */
 header {
-    background: linear-gradient to right, #007BFF, #0056b3); /* Dégradé pour l'en-tête */
+    background: linear-gradient(to right, #007BFF, #0056b3); /* Dégradé pour l'en-tête */
     color: white;
     padding: 20px 0; /* Espacement intérieur */
     text-align: center;
@@ -64,11 +65,13 @@ nav a:hover {
 
 /* Sections de contenu */
 .section-content {
-    margin: 30px 0; /* Espacement entre les sections */
+    margin: 30px auto; /* Centrer la section et ajouter de l'espace */
+    max-width: 1200px; /* S'assurer que la section ne dépasse pas la largeur du conteneur principal */
     padding: 30px;
     background-color: white;
     border-radius: 8px; /* Coins arrondis */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombre plus marquée */
+    box-sizing: border-box; /* S'assure que le padding est inclus dans la largeur */
 }
 
 .section-content h2 {
@@ -111,7 +114,7 @@ nav a:hover {
     color: #0056b3;
 }
 
-/* Images */
+/* Images (galeries par défaut qui s'enroulent) */
 .image-gallery {
     display: flex; /* Afficher les images côte à côte */
     flex-wrap: wrap; /* Permettre le retour à la ligne */
@@ -124,7 +127,11 @@ nav a:hover {
     height: auto;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* Ajouté pour mieux gérer la taille dans flexbox - c'était déjà dans la version précédente */
+    flex: 1 1 auto; /* Permet aux images de grandir et rétrécir */
+    min-width: 150px; /* Largeur minimale indicative avant de passer à la ligne */
 }
+
 
 /* Caractéristiques des antennes */
 .antenna-section {
@@ -185,6 +192,7 @@ nav a:hover {
     padding: 20px;
     border-radius: 5px;
     background-color: #f8f9fa; /* Couleur de fond pour chaque solution */
+    box-sizing: border-box; /* Ajouté pour gérer le padding */
 }
 
 .solution-list li h3 {
@@ -196,6 +204,19 @@ nav a:hover {
     list-style-type: disc;
     padding-left: 25px;
 }
+
+/* Images de prix directes dans les sections (comme Prix2.png, Prix4.1.png, Prix4.2.png, Choiseau_4_2.png, etc.) */
+/* Ces images n'étaient pas dans une .image-gallery dans la version originale */
+.section-content > img { /* Cibler les images directement enfants de .section-content */
+    max-width: 100%; /* Limite la largeur de l'image à celle du conteneur parent */
+    height: auto; /* Maintient le ratio d'aspect */
+    display: block; /* Aide à gérer l'espace blanc sous l'image */
+    margin: 20px auto; /* Centre l'image et ajoute de l'espace */
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* Inclure padding/border si présents */
+}
+
 
 /* PDF Viewer */
 .pdf-viewer {
@@ -223,17 +244,6 @@ nav a:hover {
 .download-link:hover {
     background-color: #218838;
 }
-
-/* Pied de page (optionnel) */
-/*
-footer {
-    text-align: center;
-    padding: 20px 0;
-    margin-top: 30px;
-    background-color: #007BFF;
-    color: white;
-}
-*/
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -275,4 +285,16 @@ footer {
     .pdf-viewer iframe {
         height: 400px; /* Réduire la hauteur des iframes PDF sur petits écrans */
     }
+
+    /* Ajuste les images directes dans les sections sur petits écrans */
+    .section-content > img {
+        max-width: 100%; /* S'assurer qu'elles ne dépassent pas */
+    }
+}
+
+/* Règle générale pour toutes les images */
+img {
+    max-width: 100%;
+    height: auto;
+    box-sizing: border-box; /* Important pour toutes les images */
 }
