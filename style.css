@@ -5,12 +5,14 @@ body {
     background-color: #f4f7f6; /* Couleur de fond plus douce */
     color: #333; /* Couleur de texte par défaut */
     line-height: 1.6; /* Espacement des lignes amélioré */
+    overflow-x: hidden; /* Cache le défilement horizontal global si un élément dépasse accidentellement */
 }
 
 .container {
     max-width: 1200px; /* Largeur maximale du contenu */
     margin: 0 auto; /* Centrer le contenu */
     padding: 0 20px; /* Espacement intérieur */
+    box-sizing: border-box; /* S'assure que le padding est inclus dans la largeur */
 }
 
 /* Header */
@@ -64,11 +66,13 @@ nav a:hover {
 
 /* Sections de contenu */
 .section-content {
-    margin: 30px 0; /* Espacement entre les sections */
+    margin: 30px auto; /* Centrer la section et ajouter de l'espace */
+    max-width: 1200px; /* S'assurer que la section ne dépasse pas la largeur du conteneur principal */
     padding: 30px;
     background-color: white;
     border-radius: 8px; /* Coins arrondis */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombre plus marquée */
+    box-sizing: border-box; /* S'assure que le padding est inclus dans la largeur */
 }
 
 .section-content h2 {
@@ -112,19 +116,22 @@ nav a:hover {
 }
 
 /* Images (galeries par défaut qui s'enroulent) */
-.image-gallery {
+.image-gallery:not(.scrollable-gallery) { /* Applique ce style seulement aux galeries NON défilantes */
     display: flex; /* Afficher les images côte à côte */
     flex-wrap: wrap; /* Permettre le retour à la ligne */
     gap: 20px; /* Espacement entre les images */
     margin-bottom: 20px;
 }
 
-.image-gallery img {
+.image-gallery:not(.scrollable-gallery) img {
     max-width: 100%; /* Assurer que les images ne dépassent pas leur conteneur */
     height: auto;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex: 1 1 auto; /* Permet aux images de grandir et rétrécir */
+    min-width: 150px; /* Largeur minimale indicative avant de passer à la ligne */
 }
+
 
 /* Caractéristiques des antennes */
 .antenna-section {
@@ -196,6 +203,18 @@ nav a:hover {
     list-style-type: disc;
     padding-left: 25px;
 }
+
+/* Images de prix directes dans les sections (comme Prix2.png, Prix4.1.png) */
+/* Assurez-vous que ces images ne dépassent pas le conteneur parent */
+.section-content > img { /* Sélectionne les images directement enfants de .section-content */
+    max-width: 100%; /* Limite la largeur de l'image à celle du conteneur parent */
+    height: auto; /* Maintient le ratio d'aspect */
+    display: block; /* Aide à gérer l'espace blanc sous l'image */
+    margin: 20px auto; /* Centre l'image et ajoute de l'espace */
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
 
 /* PDF Viewer */
 .pdf-viewer {
@@ -305,4 +324,16 @@ nav a:hover {
     .scrollable-gallery img {
         width: 80%; /* Largeur relative sur petits écrans */
     }
+
+    /* Ajuste les images directes dans les sections sur petits écrans */
+    .section-content > img {
+        max-width: 100%; /* S'assurer qu'elles ne dépassent pas */
+    }
+}
+
+/* Règle supplémentaire pour les images directes qui pourraient être dans des flex containers */
+/* Cela peut être nécessaire si tu as des images qui ne sont pas dans .image-gallery ou .scrollable-gallery */
+img {
+    max-width: 100%;
+    height: auto;
 }
