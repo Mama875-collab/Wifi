@@ -5,19 +5,17 @@ body {
     background-color: #f4f7f6; /* Couleur de fond plus douce */
     color: #333; /* Couleur de texte par défaut */
     line-height: 1.6; /* Espacement des lignes amélioré */
-    overflow-x: hidden; /* Cache le défilement horizontal global si un élément dépasse accidentellement */
 }
 
 .container {
     max-width: 1200px; /* Largeur maximale du contenu */
     margin: 0 auto; /* Centrer le contenu */
     padding: 0 20px; /* Espacement intérieur */
-    box-sizing: border-box; /* S'assure que le padding est inclus dans la largeur */
 }
 
 /* Header */
 header {
-    background: linear-gradient(to right, #007BFF, #0056b3); /* Dégradé pour l'en-tête */
+    background: linear-gradient to right, #007BFF, #0056b3); /* Dégradé pour l'en-tête */
     color: white;
     padding: 20px 0; /* Espacement intérieur */
     text-align: center;
@@ -66,13 +64,11 @@ nav a:hover {
 
 /* Sections de contenu */
 .section-content {
-    margin: 30px auto; /* Centrer la section et ajouter de l'espace */
-    max-width: 1200px; /* S'assurer que la section ne dépasse pas la largeur du conteneur principal */
+    margin: 30px 0; /* Espacement entre les sections */
     padding: 30px;
     background-color: white;
     border-radius: 8px; /* Coins arrondis */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombre plus marquée */
-    box-sizing: border-box; /* S'assure que le padding est inclus dans la largeur */
 }
 
 .section-content h2 {
@@ -115,23 +111,20 @@ nav a:hover {
     color: #0056b3;
 }
 
-/* Images (galeries par défaut qui s'enroulent) */
-.image-gallery:not(.scrollable-gallery) { /* Applique ce style seulement aux galeries NON défilantes */
+/* Images */
+.image-gallery {
     display: flex; /* Afficher les images côte à côte */
     flex-wrap: wrap; /* Permettre le retour à la ligne */
     gap: 20px; /* Espacement entre les images */
     margin-bottom: 20px;
 }
 
-.image-gallery:not(.scrollable-gallery) img {
+.image-gallery img {
     max-width: 100%; /* Assurer que les images ne dépassent pas leur conteneur */
     height: auto;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    flex: 1 1 auto; /* Permet aux images de grandir et rétrécir */
-    min-width: 150px; /* Largeur minimale indicative avant de passer à la ligne */
 }
-
 
 /* Caractéristiques des antennes */
 .antenna-section {
@@ -204,18 +197,6 @@ nav a:hover {
     padding-left: 25px;
 }
 
-/* Images de prix directes dans les sections (comme Prix2.png, Prix4.1.png) */
-/* Assurez-vous que ces images ne dépassent pas le conteneur parent */
-.section-content > img { /* Sélectionne les images directement enfants de .section-content */
-    max-width: 100%; /* Limite la largeur de l'image à celle du conteneur parent */
-    height: auto; /* Maintient le ratio d'aspect */
-    display: block; /* Aide à gérer l'espace blanc sous l'image */
-    margin: 20px auto; /* Centre l'image et ajoute de l'espace */
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-
 /* PDF Viewer */
 .pdf-viewer {
     margin-bottom: 20px;
@@ -243,41 +224,16 @@ nav a:hover {
     background-color: #218838;
 }
 
-/* Style pour une galerie d'images défilante (nouvelle classe) */
-.scrollable-gallery {
-    display: flex;
-    gap: 20px;
-    margin-bottom: 20px;
-    overflow-x: auto; /* Permet le défilement horizontal si le contenu dépasse */
-    padding-bottom: 10px; /* Ajoute un peu de padding en bas pour la barre de défilement */
-    scrollbar-width: thin; /* Style la barre de défilement (Firefox) */
-    scrollbar-color: #007BFF #f4f7f6; /* Couleur de la barre de défilement (Firefox) */
+/* Pied de page (optionnel) */
+/*
+footer {
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 30px;
+    background-color: #007BFF;
+    color: white;
 }
-
-/* Style de la barre de défilement pour Webkit (Chrome, Safari) */
-.scrollable-gallery::-webkit-scrollbar {
-    height: 8px; /* Hauteur de la barre de défilement */
-}
-
-.scrollable-gallery::-webkit-scrollbar-track {
-    background: #f4f7f6; /* Couleur de fond de la piste */
-    border-radius: 10px;
-}
-
-.scrollable-gallery::-webkit-scrollbar-thumb {
-    background-color: #007BFF; /* Couleur du "pouce" de la barre de défilement */
-    border-radius: 10px;
-    border: 2px solid #f4f7f6; /* Bordure autour du pouce */
-}
-
-.scrollable-gallery img {
-    flex-shrink: 0; /* Empêche les images de rétrécir */
-    width: 300px; /* Définit une largeur fixe pour les images (ajuste si besoin) */
-    height: auto;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
+*/
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -319,21 +275,4 @@ nav a:hover {
     .pdf-viewer iframe {
         height: 400px; /* Réduire la hauteur des iframes PDF sur petits écrans */
     }
-
-     /* Ajuste la largeur des images défilantes sur petits écrans si nécessaire */
-    .scrollable-gallery img {
-        width: 80%; /* Largeur relative sur petits écrans */
-    }
-
-    /* Ajuste les images directes dans les sections sur petits écrans */
-    .section-content > img {
-        max-width: 100%; /* S'assurer qu'elles ne dépassent pas */
-    }
-}
-
-/* Règle supplémentaire pour les images directes qui pourraient être dans des flex containers */
-/* Cela peut être nécessaire si tu as des images qui ne sont pas dans .image-gallery ou .scrollable-gallery */
-img {
-    max-width: 100%;
-    height: auto;
 }
