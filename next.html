@@ -1,545 +1,303 @@
-/* Général */
-body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    background-color: #f4f7f6; /* Couleur de fond plus douce */
-    color: #333; /* Couleur de texte par défaut */
-    line-height: 1.6; /* Espacement des lignes amélioré */
-    overflow-x: hidden; /* Cache le défilement horizontal global si un élément dépasse accidentellement */
-}
-
-.container {
-    max-width: 1200px; /* Largeur maximale du contenu */
-    margin: 0 auto; /* Centrer le contenu */
-    padding: 0 20px; /* Espacement intérieur */
-    box-sizing: border-box; /* S'assure que le padding est inclus dans la largeur */
-}
-
-/* Header */
-header {
-    background: linear-gradient(to right, #007BFF, #0056b3); /* Dégradé pour l'en-tête */
-    color: white;
-    padding: 20px 0; /* Espacement intérieur */
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Ombre légère */
-    /* Supprimer la hauteur fixe ici si vous l'aviez mise */
-}
-
-header h1 {
-    margin: 0;
-    font-size: 2.5em; /* Taille de titre plus grande */
-    margin-bottom: 15px; /* Ajouter un peu d'espace sous le titre */
-}
-
-/* Styles pour le conteneur à l'intérieur du header pour la disposition */
-header .container {
-    display: flex; /* Utiliser flexbox pour aligner h1 et nav */
-    flex-direction: column; /* Empiler h1 et nav par défaut */
-    align-items: center; /* Centrer horizontalement les éléments empilés */
-    padding-top: 0; /* S'assurer que le padding du header est utilisé */
-    padding-bottom: 0; /* S'assurer que le padding du header est utilisé */
-}
-
-
-/* --- Styles pour le Menu Burger Fixe --- */
-.menu-burger-fixed {
-    background-color: #0056b3; /* Utiliser la couleur de fond de votre nav existante */
-    color: white;
-    padding: 10px 20px; /* Ajouter du padding pour l'espacement */
-    position: static; /* Par défaut, le nav n'est PAS fixe sur les grands écrans */
-    top: auto; /* Réinitialiser top */
-    left: auto; /* Réinitialiser left */
-    width: auto; /* Réinitialiser width */
-    z-index: auto; /* Réinitialiser z-index */
-    box-shadow: none; /* Enlever l'ombre du menu fixe sur les grands écrans */
-    display: flex; /* Utiliser flexbox pour aligner les éléments */
-    justify-content: center; /* Centrer les liens horizontalement */
-    align-items: center; /* Centrer verticalement */
-    box-sizing: border-box; /* Inclure padding dans la largeur */
-    /* height: auto;  // Laissez la hauteur s'adapter au contenu */
-    margin-top: 0; /* S'assurer qu'il n'y a pas de marge supérieure inutile */
-}
-
-.menu-burger-fixed .burger-icon {
-    cursor: pointer;
-    display: none; /* Masquer par défaut sur les grands écrans */
-    flex-direction: column; /* Empiler les barres */
-    justify-content: space-between; /* Espacer les barres */
-    width: 30px;
-    height: 20px;
-}
-
-.menu-burger-fixed .burger-icon span {
-    display: block;
-    width: 100%;
-    height: 2px;
-    background-color: white;
-    transition: transform 0.3s ease, opacity 0.3s ease; /* Transition pour l'animation */
-}
-
-/* Animation de l'icône du burger */
-.menu-burger-fixed.active .burger-icon span:nth-child(1) {
-    transform: translateY(9px) rotate(45deg);
-}
-
-.menu-burger-fixed.active .burger-icon span:nth-child(2) {
-    opacity: 0;
-}
-
-.menu-burger-fixed.active .burger-icon span:nth-child(3) {
-    transform: translateY(-9px) rotate(-45deg);
-}
-
-.menu-burger-fixed ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex; /* Afficher les éléments horizontalement par défaut */
-    justify-content: center; /* Centrer les liens */
-}
-
-.menu-burger-fixed li {
-    margin: 0 15px; /* Espacement entre les éléments */
-}
-
-.menu-burger-fixed a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-.menu-burger-fixed a:hover {
-    color: #a0d2eb;
-}
-
-/* Styles pour le menu déroulant (sur petits écrans) */
-/* Note: Dans cette implémentation, les liens principaux deviennent le menu déroulant sur mobile */
-/* Si vous aviez des sous-menus, ils auraient leurs propres styles ici */
-.menu-dropdown {
-    /* Ces styles sont plus génériques si vous utilisez un élément séparé pour un menu déroulant */
-    /* Dans votre cas, la liste ul principale se comporte comme le menu déroulant sur mobile */
-}
-
-/* Afficher le menu déroulant quand le menu burger est actif (sur petits écrans) */
-.menu-burger-fixed.active .menu-dropdown {
-    /* Ces styles sont plus génériques si vous utilisez un élément séparé pour un menu déroulant */
-}
-
-/* Ajustements pour le contenu principal pour ne pas être caché par le menu fixe */
-/* Cette marge n'est nécessaire que lorsque le menu est fixe (sur petits écrans) */
-main.container {
-    margin-top: 0; /* Réinitialiser la marge supérieure par défaut */
-}
-
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    header h1 {
-        font-size: 1.8em;
-        margin-bottom: 10px; /* Ajuster la marge sous le titre sur mobile */
-    }
-
-    /* Le conteneur du header n'a plus besoin d'être flex-direction column sur mobile */
-    header .container {
-        display: block; /* Revenir à un affichage par défaut */
-        text-align: center; /* Centrer le texte */
-    }
-
-    /* Le menu devient fixe sur les petits écrans */
-    .menu-burger-fixed {
-         position: fixed; /* Le menu devient fixe */
-         top: 0;
-         left: 0;
-         width: 100%;
-         z-index: 1000;
-         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Ajouter l'ombre */
-         height: 50px; /* Hauteur du menu fixe sur mobile */
-         padding: 10px 20px; /* Ajuster le padding */
-         justify-content: space-between; /* Espacer l'icône du burger et la liste */
-    }
-
-    .menu-burger-fixed .burger-icon {
-        display: flex; /* Afficher l'icône du burger */
-    }
-
-    .menu-burger-fixed ul {
-        display: none; /* Masquer la liste de navigation par default */
-        flex-direction: column; /* Empiler les éléments du menu déroulant */
-        width: 100%;
-        position: absolute; /* Positionner la liste absolument sous le menu fixe */
-        top: 50px; /* Ajuster en fonction de la hauteur de votre menu fixe sur mobile */
-        left: 0;
-        background-color: #0056b3; /* Couleur de fond du menu déroulant */
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        justify-content: center; /* Centrer les liens sur mobile */
-    }
-
-    /* Afficher la liste de navigation quand le menu burger est actif */
-    .menu-burger-fixed.active ul {
-         display: flex; /* Afficher la liste en colonne */
-    }
-
-    .menu-burger-fixed li {
-         margin: 0; /* Enlever la marge horizontale sur mobile */
-    }
-
-    .menu-burger-fixed a {
-        display: block; /* S'assurer que les liens prennent toute la largeur */
-        padding: 10px 20px; /* Ajouter du padding vertical et horizontal */
-        text-align: center; /* Centrer le texte des liens sur mobile */
-    }
-
-     .menu-burger-fixed a:hover {
-         background-color: #004085; /* Couleur de survol pour les liens du menu déroulant */
-     }
-
-    /* Ajuster la marge du contenu principal pour le menu fixe sur mobile */
-    main.container {
-        margin-top: 80px; /* Ajouter une marge supérieure pour l'espace du titre et du menu fixe */
-    }
-}
-/* --- Fin des Styles pour le Menu Burger Fixe --- */
-
-
-/* Sections de contenu */
-.section-content {
-    margin: 30px auto; /* Centrer la section et ajouter de l'espace */
-    max-width: 1200px; /* S'assurer que la section ne dépasse pas la largeur du conteneur principal */
-    padding: 30px;
-    background-color: white;
-    border-radius: 8px; /* Coins arrondis */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombre plus marquée */
-    box-sizing: border-box; /* S'assure que le padding est inclus dans la largeur */
-}
-
-.section-content h2 {
-    color: #007BFF; /* Couleur du titre de section */
-    border-bottom: 2px solid #007BFF; /* Ligne sous le titre */
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-    font-size: 2em;
-}
-
-.section-content h3 {
-    color: #555; /* Couleur des sous-titres */
-    margin-top: 25px;
-    margin-bottom: 15px;
-    font-size: 1.5em;
-}
-
-.section-content p {
-    margin-bottom: 15px;
-}
-
-.section-content ul {
-    list-style-type: disc;
-    padding-left: 25px;
-}
-
-.section-content li {
-    margin-bottom: 8px;
-}
-
-.section-content a {
-    color: #007BFF;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.section-content a:hover {
-    text-decoration: underline;
-    color: #0056b3;
-}
-
-/* Images (galeries par défaut qui s'enroulent) */
-.image-gallery {
-    display: flex; /* Afficher les images côte à côte */
-    flex-wrap: wrap; /* Permettre le retour à la ligne */
-    gap: 20px; /* Espacement entre les images */
-    margin-bottom: 20px;
-}
-
-.image-gallery img {
-    max-width: 100%; /* Assurer que les images ne dépassent pas leur conteneur */
-    height: auto;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    flex: 1 1 auto; /* Permet aux images de grandir et rétrécir */
-    min-width: 150px; /* Largeur minimale indicative avant de passer à la ligne */
-}
-
-/* Caractéristiques des antennes */
-.antenna-section {
-    margin-bottom: 30px;
-    padding: 20px;
-    background-color: #e9ecef; /* Couleur de fond pour les sections d'antennes */
-    border-radius: 5px;
-}
-
-.antenna-details {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    align-items: center;
-}
-
-.antenna-details ul {
-    flex: 1; /* Permettre à la liste de prendre l'espace disponible */
-    min-width: 250px; /* Largeur minimale avant de passer à la ligne */
-    margin-bottom: 0; /* Enlever la marge du bas si aligné */
-}
-
-.antenna-details img {
-    max-width: 200px; /* Taille maximale pour les images d'antennes */
-    height: auto;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Carte */
-.map-container {
-    position: relative;
-    overflow: hidden;
-    padding-top: 56.25%; /* Ratio 16:9 pour l'iframe */
-    margin-bottom: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.map-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-}
-
-/* Liste des solutions */
-.solution-list {
-    list-style-type: none; /* Enlever les puces par défaut */
-    padding: 0;
-}
-
-.solution-list li {
-    margin-bottom: 30px;
-    border: 1px solid #ccc; /* Bordure légère */
-    padding: 20px;
-    border-radius: 5px;
-    background-color: #f8f9fa; /* Couleur de fond pour chaque solution */
-    box-sizing: border-box; /* S'assurer que le padding est inclus */
-    width: 100%; /* S'assurer que le li prend toute la largeur disponible */
-}
-
-.solution-list li h3 {
-    margin-top: 0;
-    color: #007BFF;
-}
-
-.solution-list li ul {
-    list-style-type: disc;
-    padding-left: 25px;
-}
-
-/* Images de prix directes dans les sections (comme Prix2.png, Prix4.1.png) */
-/* Ciblage plus spécifique pour les images directement enfants d'un li dans .solution-list */
-.solution-list li > img {
-    max-width: 100%; /* Limite la largeur de l'image à celle du conteneur parent (le li) */
-    height: auto; /* Maintient le ratio d'aspect */
-    display: block; /* Aide à gérer l'espace blanc sous l'image */
-    margin: 20px auto; /* Centre l'image et ajoute de l'espace */
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box; /* Inclure padding/border si présents */
-}
-
-
-/* PDF Viewer */
-.pdf-viewer {
-    margin-bottom: 20px;
-}
-
-.pdf-viewer iframe {
-    width: 100%;
-    height: 600px; /* Hauteur fixe pour les iframes PDF */
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.download-link {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 10px 15px;
-    background-color: #28a745; /* Bouton vert */
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.download-link:hover {
-    background-color: #218838;
-}
-
-/* --- Styles pour le Slider --- */
-.slider-container {
-    position: relative;
-    width: 100%;
-    /* Augmente la largeur maximale ici pour des images plus grandes */
-    max-width: 1000px; /* Exemple : passe de 800px à 1000px */
-    margin: 30px auto;
-    overflow: hidden;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    /* Optionnel: ajoute une hauteur minimale si tu veux que le conteneur ne "saute" pas */
-    /* min-height: 500px; /* Ajuste cette valeur en fonction de la hauteur typique de tes images */
-}
-
-.slider {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    width: 100%;
-    height: auto; /* Laisse la hauteur s'adapter par défaut */
-}
-
-.slider img {
-    width: 100%; /* Chaque image prend 100% de la largeur du conteneur visible */
-    height: auto; /* Laisse la hauteur s'adapter par default */
-    flex-shrink: 0;
-    /* Optionnel : Si tes images ont des ratios d'aspect très différents et que tu veux une hauteur plus uniforme */
-    /* height: 500px; /* Définit une hauteur fixe (ajuste selon tes besoins) */
-    /* object-fit: contain; /* ou 'cover' - Choisis l'un si tu utilises une hauteur fixe */
-}
-
-.slider-container .prev-btn,
-.slider-container .next-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    z-index: 10;
-    border-radius: 5px;
-    font-size: 1.5em;
-    transition: background-color 0.3s ease;
-}
-
-.slider-container .prev-btn {
-    left: 10px;
-}
-
-.slider-container .next-btn {
-    right: 10px;
-}
-
-.slider-container .prev-btn:hover,
-.slider-container .next-btn:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-.slider-dots {
-    position: absolute;
-    bottom: 10px;
-    left: 0;
-    right: 0;
-    text-align: center;
-    z-index: 10;
-}
-
-.slider-dot {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    margin: 0 5px;
-    background-color: rgba(255, 255, 255, 0.5);
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.slider-dot.active {
-    background-color: white;
-    transform: scale(1.2);
-}
-/* --- Fin des Styles pour le Slider --- */
-
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    header h1 {
-        font-size: 1.8em;
-        margin-bottom: 10px; /* Ajuster la marge sous le titre sur mobile */
-    }
-
-    /* Le conteneur du header n'a plus besoin d'être flex-direction column sur mobile */
-    header .container {
-        display: block; /* Revenir à un affichage par défaut */
-        text-align: center; /* Centrer le texte */
-    }
-
-    /* Le menu devient fixe sur les petits écrans */
-    .menu-burger-fixed {
-         position: fixed; /* Le menu devient fixe */
-         top: 0;
-         left: 0;
-         width: 100%;
-         z-index: 1000;
-         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Ajouter l'ombre */
-         height: 50px; /* Hauteur du menu fixe sur mobile */
-         padding: 10px 20px; /* Ajuster le padding */
-         justify-content: space-between; /* Espacer l'icône du burger et la liste */
-    }
-
-    .menu-burger-fixed .burger-icon {
-        display: flex; /* Afficher l'icône du burger */
-    }
-
-    .menu-burger-fixed ul {
-        display: none; /* Masquer la liste de navigation par default */
-        flex-direction: column; /* Empiler les éléments du menu déroulant */
-        width: 100%;
-        position: absolute; /* Positionner la liste absolument sous le menu fixe */
-        top: 50px; /* Ajuster en fonction de la hauteur de votre menu fixe sur mobile */
-        left: 0;
-        background-color: #0056b3; /* Couleur de fond du menu déroulant */
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        justify-content: center; /* Centrer les liens sur mobile */
-    }
-
-    /* Afficher la liste de navigation quand le menu burger est actif */
-    .menu-burger-fixed.active ul {
-         display: flex; /* Afficher la liste en colonne */
-    }
-
-    .menu-burger-fixed li {
-         margin: 0; /* Enlever la marge horizontale sur mobile */
-    }
-
-    .menu-burger-fixed a {
-        display: block; /* S'assurer que les liens prennent toute la largeur */
-        padding: 10px 20px; /* Ajouter du padding vertical et horizontal */
-        text-align: center; /* Centrer le texte des liens sur mobile */
-    }
-
-     .menu-burger-fixed a:hover {
-         background-color: #004085; /* Couleur de survol pour les liens du menu déroulant */
-     }
-
-    /* Ajuster la marge du contenu principal pour le menu fixe sur mobile */
-    main.container {
-        margin-top: 80px; /* Ajouter une marge supérieure pour l'espace du titre et du menu fixe */
-    }
-}
-/* --- Fin des Styles pour le Menu Burger Fixe --- */
-
-
-/* Règle générale pour toutes les images */
-img {
-    max-width: 100%;
-    height: auto;
-    box-sizing: border-box; /* Important pour toutes les images */
-}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet Wi-Fi Public</title>
+    <link rel="icon" type="image/png" href="im/logo.png">
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="auth.js"></script>
+    <script src="slider.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <h1>Projet d'Installation d'un Wi-Fi Public</h1>
+        <!-- La balise nav reste, mais son contenu est modifié pour le menu burger -->
+        <nav class="menu-burger-fixed">
+            <div class="burger-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul>
+                <li><a href="#cahier-des-charges">Cahier des charges</a></li>
+                <li><a href="#caracteristiques">Caractéristiques des appareils</a></li>
+                <li><a href="#localisation">Localisation des sites</a></li>
+                <li><a href="#distances">Distances des sites</a></li>
+                <li><a href="#propositions">Propositions d'idées</a></li>
+                <li><a href="#demonstrations">Démonstration des propositions</a></li>
+                <li><a href="#ConfNano">Configuration du routeur</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <section id="cahier-des-charges" class="section-content">
+        <h2>Cahier des Charges</h2>
+        <p>Ce cahier des charges définit les exigences et spécifications pour l'installation d'un réseau Wi-Fi public dans notre territoire. Les éléments suivants doivent être respectés :</p>
+        <ul>
+            <li><strong>Nombre d'utilisateurs :</strong> 50 utilisateurs en simultané sur le réseau.</li>
+            <li><strong>Équipements utilisés :</strong> Utilisation du pack CloudSpot de type <a href="https://www.cloudspot.fr/solutions-wifi/nano" target="_blank">Nano</a>.</li>
+            <li><strong>Emplacement :</strong> Définir les emplacements des émetteurs du Wi-Fi.</li>
+            <li><strong>Formulaire de connexion :</strong> Similaire au style du Wi-Fi4EU (Nom, Prénom et plus de 15 ans).</li>
+            <li><strong>Après la connexion :</strong> Les utilisateurs seront renvoyés sur le portail des actualités de Château-Gontier-Sur-Mayenne.</li>
+            <li><strong>Accessibilité :</strong> Le Wi-Fi doit être accessible depuis n'importe quel appareil disposant d'une antenne Wi-Fi.</li>
+            <li><strong>Règles :</strong>
+                <ul>
+                    <li>Ne pas générer d’interférences avec des services autorisés.</li>
+                    <li>Limiter la puissance maximale des antennes, ne pas utiliser en extérieur les fréquences basses de la bande 5 GHz.</li>
+                    <li>Employer des équipements conformes à <a href="https://www.lne.fr/fr/service/essais/essais-selon-directive-red#:" target="_blank">la directive européenne 2014/53/UE</a>.</li>
+                    <li>Selon la loi Abeille, « les établissements proposant au public un accès Wi-Fi doivent le mentionner clairement au moyen d’un pictogramme à l’entrée de l’établissement ».</li>
+                    <li>Il faut également respecter des valeurs limites d’exposition du public aux champs électromagnétiques.</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+    <section id="propositions" class="section-content">
+        <h2>Propositions de fonctionnement</h2>
+        <ol class="solution-list">
+            <li>
+                <h3>Première Solution</h3>
+                <p>Les antennes sont disposées à l'extérieur et se fournissent le réseau Wi-Fi entre elles (comme la disposition au camping de Daon). Cette solution nécessiterait un pack Nano et 5 antennes UniFi. Cependant, elle présente des désavantages :</p>
+                <ul>
+                    <li>Dégradations plus importantes à l'extérieur dues aux intempéries.</li>
+                    <li>Réglementations strictes à respecter concernant les fréquences utilisées et la puissance maximale autorisée (100 mW).</li>
+                </ul>
+            </li>
+
+            <li>
+                <h3>Deuxième Solution</h3>
+                <p>Les antennes seraient reliées entre elles à l'aide d'un câble Ethernet. Les antennes seraient à l'intérieur des bâtiments, donc non exposées aux intempéries. Cette solution nécessiterait un pack Nano, 6 antennes UniFi ainsi que 2 switchs. Cependant, elle présente des désavantages :</p>
+                <ul>
+                    <li>Complexité pour faire passer des câbles entre les bâtiments (où communiquent-ils déjà ?).</li>
+                    <li>Des switchs supplémentaires, la solution serait plus onéreuse.</li>
+                </ul>
+            </li>
+
+            <li>
+                <h3>Troisième Solution</h3>
+                <p>Similaire à la première solution, mais en disposant les antennes à l'intérieur. Cette solution aurait la même composition que la solution une, mais présente presque les mêmes désavantages, tels que :</p>
+                <ul>
+                    <li>Perte du signal au fur et à mesure, puisque celles-ci seraient à l'intérieur, donc le signal aurait plus de mal à passer à l'extérieur.</li>
+                    <li>Due à l'épaisseur des murs, le signal perdrait en qualité au fil des retransmissions.</li>
+                </ul>
+            </li>
+
+            <li>
+                <h3>Quatrième Solution</h3>
+                <p>Cette solution mélange la première et la deuxième solution. Elle consiste à connecter la Mairie et la salle du conseil.</p>
+                <p>Cette solution nécessiterait donc le Pack Nano, 5 antennes et un switch. Il y a également deux options :</p>
+                <ul>
+                    <li><strong>Option 1 :</strong> Les antennes sont disposées dehors (on connaît désormais leurs désavantages).</li>
+                    <li><strong>Option 2 :</strong> Les antennes sont disposées à l'intérieur (on connaît désormais leurs désavantages). Cette solution demande un switch supplémentaire.</li>
+                </ul>
+            </li>
+        </ol>
+    </section>
+
+    <section id="caracteristiques" class="section-content">
+        <h2>Caractéristiques du Routeur hAP ax²</h2>
+        <h3>Routeur hAP ax² de CloudSpot</h3>
+        <p>Pour commencer, le routeur mis en place par CloudSpot dans la solution Nano est le <a href="https://mikrotik.com/product/hap_ax2#fndtn-specifications" target='blank'>hAP ax²</a> avec ces caractéristiques :</p>
+        <div class="image-gallery">
+            <img src="im/car_hap.png" alt="Caractéristiques du routeur hAP ax² - partie 1">
+            <img src="im/car2_hap.png" alt="Caractéristiques du routeur hAP ax² - partie 2">
+        </div>
+        <p>Le routeur a une antenne Wi-Fi intégrée, mais pour un souci de manque d'options de configurations et d'autres finalités, nous allons utiliser des antennes UniFi.</p>
+        <h2>Caractéristiques des antennes UniFi</h2>
+
+        <div class="antenna-section">
+            <h3>Antenne <a href="https://uk.store.ui.com/uk/en/category/wifi-outdoor/products/u6-mesh" target="_blank">UniFi U6 Mesh</a> (Solutions 1 et 4_1)</h3>
+            <div class="antenna-details">
+                <ul>
+                    <li> Prix : 188.80 €</li>
+                    <li> Nombre maximal de clients : plus de 300</li>
+                    <li> Montage mural inclus + adaptateur PoE GbE 48V DC, 0.32A</li>
+                    <li> Puissance d'émission d'antenne : 26 dBm pour la bande 5 GHz et 22 dBm pour la bande 2.4 GHz</li>
+                    <li> Consommation électrique maximale : 13W</li>
+                    <li> Température de fonctionnement : -30° à 60°C</li>
+                </ul>
+                <img src="im/U6Mesh.png" alt="Antenne UniFi U6 Mesh">
+            </div>
+        </div>
+
+        <div class="antenna-section">
+            <h3>Antenne <a href="https://uk.store.ui.com/uk/en/products/uap-flexhd" target="_blank">Flex HD</a> (Solution 2 et 3)</h3>
+            <div class="antenna-details">
+                <ul>
+                    <li> Prix : 177.83 €</li>
+                    <li> Nombre maximal de clients : plus de 200</li>
+                    <li> Puissance d'émission d'antenne : 26 dBm pour la bande 5 GHz et 23 dBm pour la bande 2.4 GHz</li>
+                    <li> Consommation électrique maximale : 10.5W</li>
+                    <li> Température de fonctionnement : -30° à 70°C</li>
+                </ul>
+                <img src="im/Flex_HD.png" alt="Antenne UniFi Flex HD">
+            </div>
+        </div>
+
+        <div class="antenna-section">
+            <h3>Antenne <a href="https://uk.store.ui.com/uk/en/products/u7-pro" target="_blank">U7 Pro</a> (Solutions 4_2)</h3>
+            <div class="antenna-details">
+                <ul>
+                    <li> Prix : 190.58 €</li>
+                    <li> Nombre maximal de clients : plus de 300</li>
+                    <li> Puissance d'émission d'antenne : 23 dBm pour la bande 6 GHz, 26 dBm pour la bande 5 GHz et 22 dBm pour la bande 2.4 GHz</li>
+                    <li> Consommation électrique maximale : 21W</li>
+                    <li> Température de fonctionnement : -30° à 40°C</li>
+                </ul>
+                <img src="im/U7_Pro.png" alt="Antenne UniFi U7 Pro">
+            </div>
+        </div>
+    </section>
+
+    <section id="localisation" class="section-content">
+        <h2>Localisation des sites</h2>
+        <p>Veuillez consulter la carte ci-dessous pour voir les emplacements prévus pour les points d'accès Wi-Fi :</p>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/d/embed?mid=12rHeRUxFiid_xNG9k4QP8lsHKeDLIAs&ehbc=2E312F&noprof=1" width="640" height="480" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <section id="distances" class="section-content">
+        <h2>Distances des sites d'installations des antennes</h2>
+        <p>La distance théorique la plus longue de cette installation est d'environ 125 m, entre le point le plus éloigné de la Mairie et le point le plus éloigné de l'espace Vulcain.</p>
+        <img src="im/car_dist.png" alt="Schéma des distances entre les sites">
+    </section>
+
+
+    <section id="demonstrations" class="section-content">
+        <h2>Démonstration des propositions</h2>
+        <p>Attention, ces simulations ont été effectuées en considérant que tous les murs des bâtiments aient un affaiblissement maximal de 15 dB.</p>
+        <ol class="solution-list">
+            <li>
+                <h3>Solution 1</h3>
+                <div class="pdf-viewer">
+                    <iframe src="simulation/Solution_1.pdf" title="Démonstration Solution 1"></iframe>
+                    <p><a href="simulation/Solution_1.pdf" download class="download-link">Télécharger le PDF</a></p>
+                </div>
+            </li>
+
+            <li>
+                <h3>Solution 2</h3>
+                 <div class="pdf-viewer">
+                    <iframe src="simulation/Solution2/Solution_2.pdf" title="Démonstration Solution 2"></iframe>
+                    <p><a href="simulation/Solution2/Solution_2.pdf" download class="download-link">Télécharger le PDF</a></p>
+                </div>
+                <img src="simulation/Solution2/prix2.png" alt="Estimation du prix Solution 2">
+            </li>
+
+            <li>
+                <h3>Solution 3</h3>
+                <div class="pdf-viewer">
+                    <iframe src="simulation/Solution3/Solution_3.pdf" title="Démonstration Solution 3"></iframe>
+                    <p><a href="simulation/Solution3/Solution_3.pdf" download class="download-link">Télécharger le PDF</a></p>
+                </div>
+
+                <div class="slider-container">
+                    <div class="slider">
+                        <img src="simulation/Solution3/Salle_Choiseau_3.png">
+                        <img src="simulation/Solution3/Salle_Conseil_3.png">
+                        <img src="simulation/Solution3/Fournil_3.png">
+                        <img src="simulation/Solution3/Vulcain_3.png">
+                        <img src="simulation/Solution3/Mairie_3.png">
+                    </div>
+                    <button class="prev-btn"><</button>
+                    <button class="next-btn">></button>
+                    <div class="slider-dots">
+
+                    </div>
+                </div>
+            </li>
+
+            <li>
+                <h3>Solution 4</h3>
+                <p><strong>- Option 1</strong></p>
+                <div class="pdf-viewer">
+                    <iframe src="simulation/Solution4/Opt1/Solution_4_1.pdf" title="Démonstration Solution 4 Option 1"></iframe>
+                    <p><a href="simulation/Solution4/Opt1/Solution_4_1.pdf" download class="download-link">Télécharger le PDF</a></p>
+                </div>
+                <img src="simulation/Solution4/Opt1/Prix4.1.png" alt="Estimation du prix Solution 4 Option 1">
+
+                <p><strong>- Option 2</strong></p>
+                 <div class="pdf-viewer">
+                    <iframe src="simulation/Solution4/Opt2/Solution_4_2.pdf" title="Démonstration Solution 4 Option 2"></iframe>
+                    <p><a href="simulation/Solution4/Opt2/Solution_4_2.pdf" download class="download-link">Télécharger le PDF</a></p>
+                </div>
+                <img src="simulation/Solution4/Opt2/Prix_4.2.png" alt="Estimation du prix Solution 4 Option 2">
+
+
+                <div class="slider-container">
+                    <div class="slider">
+                        <img src="simulation/Solution4/Opt2/Choiseau_4_2.png" alt="Représentation graphique du signal - Choiseau">
+                        <img src="simulation/Solution4/Opt2/Conseil_4_2.png" alt="Représentation graphique du signal - Conseil">
+                        <img src="simulation/Solution4/Opt2/Fournil_4_2.png" alt="Représentation graphique du signal - Fournil">
+                        <img src="simulation/Solution4/Opt2/Vulcain_4_2.png" alt="Représentation graphique du signal - Vulcain">
+                        <img src="simulation/Solution4/Opt2/Mairie_4_2.png" alt="Représentation graphique du signal - Mairie">
+
+                    </div>
+                    <button class="prev-btn"><</button>
+                    <button class="next-btn">></button>
+                    <div class="slider-dots">
+
+                    </div>
+                </div>
+
+
+            </li>
+
+        </ol>
+    </section>
+
+    <section id="ConfNano" class="section-content">
+    <h2>Configuration du routeur hAP ax²</h2>
+    <p>Comme demandé dans le cahier des charges, nous voulons un formulaire de connexion simple et similaire à celui de Wifi4EU de ce style :</p>
+    <img src="im/w4EU.png" alt="Image du formulaire de connexion du Wifi4EU">
+    <p>Mais notre objectif est d'avoir un formulaire qui ressemble plutôt à celui-ci :</p>
+    <img src="im/form.png" alt="Image du formulaire de connexion voulu">
+    <p>Pour configurer cette interface nous allons avoir besoin du site pour <a href="https://help.mikrotik.com/docs/spaces/ROS/pages/87162881/Hotspot+customisation" target="blank">la documentation</a></p>
+
+
+
+    </section>
+</main>
+
+
+<script type="module" src="auth.js"></script>
+<script src="slider.js" defer></script>
+
+
+<script>
+  // Attendre  DOM soit entièrement chargé avant d'exécuter le script
+  document.addEventListener('DOMContentLoaded', () => {
+      const burgerIcon = document.querySelector('.burger-icon');
+      const menuBurgerFixed = document.querySelector('.menu-burger-fixed');
+      const navLinks = document.querySelectorAll('.menu-burger-fixed ul li a'); // Sélectionnez les liens
+
+      // Vérifiez si les éléments existent avant d'ajouter des écouteurs
+      if (burgerIcon && menuBurgerFixed && navLinks.length > 0) {
+          burgerIcon.addEventListener('click', () => {
+              menuBurgerFixed.classList.toggle('active');
+          });
+
+          // Fermer le menu quand un lien est cliqué (sur mobile)
+          navLinks.forEach(link => {
+              link.addEventListener('click', () => {
+                  if (window.innerWidth <= 768) { // Appliquer seulement sur les petits écrans
+                      menuBurgerFixed.classList.remove('active');
+                  }
+              });
+          });
+      } else {
+          console.error("Erreur: Impossible de trouver les éléments du menu burger. Vérifiez vos sélecteurs.");
+      }
+  });
+</script>
+
+</body>
+</html>
