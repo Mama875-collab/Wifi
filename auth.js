@@ -1,6 +1,7 @@
+// auth.js 
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js';
+import { getAuth, onAuthStateChanged, sendEmailVerification } from 'https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js';
 
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js'; 
-import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js'; 
 
 
 const firebaseConfig = {
@@ -14,46 +15,44 @@ const firebaseConfig = {
 };
 
 // Initialiser Firebase
-
 let app;
 try {
   app = initializeApp(firebaseConfig);
 } catch (error) {
   console.warn("Firebase app already initialized. Skipping initialization.");
-
+  
 }
 
 // Obtenir l'instance Auth
-const auth = getAuth(app); // Passez l'instance 'app' à getAuth
+const auth = getAuth(app);
 
 document.addEventListener('DOMContentLoaded', function() {
     // Écouteur d'état d'authentification
     onAuthStateChanged(auth, (user) => {
         if (user) {
-            // L'utilisateur est connecté. Maintenant, vérifier si son email est vérifié.
+            // L'utilisateur est connecté.
             console.log('User is signed in:', user.uid);
 
+            // --- LOGIQUE DE REDIRECTION BASÉE SUR LA VÉRIFICATION ---
             if (!user.emailVerified) {
                 // L'utilisateur est connecté MAIS l'email n'est PAS vérifié.
                 console.log('Email is not verified. Redirecting to email verification page.');
-                // Rediriger vers la page de vérification d'email
-                window.location.replace('verify-email.html'); // Assurez-vous que le chemin est correct
-                // Utiliser replace() est conseillé ici pour empêcher l'utilisateur de revenir
-                // à la page en utilisant le bouton retour du navigateur avant que l'email ne soit vérifié.
-                return; // Arrêter l'exécution ici pour cet état
+
+                window.location.replace('verify-email.html'); // Redirection
+                return; // Arrêter l'exécution pour cet état
             } else {
                 // L'utilisateur est connecté ET l'email est vérifié.
                 console.log('User is signed in and email is verified.');
-                // Le contenu de la page peut être affiché.
-                // C'est ici que vous pouvez ajouter du code pour charger du contenu spécifique
-                // ou afficher des éléments réservés aux utilisateurs vérifiés.
+                // L'utilisateur peut accéder au contenu de cette page.
+                // Mettre code pour afficher la page
             }
 
         } else {
-            // L'utilisateur N'EST PAS connecté. Redirigez-le vers la page de connexion.
+            // L'utilisateur N'EST PAS connecté.
             console.log('No user is signed in. Redirecting to login.');
             // Redirection vers la page de connexion
-            window.location.replace('login.html'); // Assurez-vous que le chemin est correct
+            window.location.replace('index.html'); 
         }
     });
 });
+
