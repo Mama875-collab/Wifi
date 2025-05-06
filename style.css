@@ -29,137 +29,40 @@ header h1 {
     font-size: 2.5em; /* Taille de titre plus grande */
 }
 
-/* --- Styles pour le Menu Burger Fixe --- */
-.menu-burger-fixed {
-    background-color: #0056b3; /* Utiliser la couleur de fond de votre nav existante */
-    color: white;
-    padding: 10px 20px; /* Ajouter du padding pour l'espacement */
-    position: fixed; /* Clé pour rester en haut */
+nav {
+    margin-top: 15px;
+    position: sticky;
     top: 0;
-    left: 0; /* S'assurer qu'il commence à gauche */
-    width: 100%; /* Important pour couvrir tout l'écran */
-    z-index: 1000; /* Assurez-vous qu'il est au-dessus de tout */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Garder l'ombre */
-    display: flex; /* Utiliser flexbox pour aligner les éléments */
-    justify-content: space-between; /* Espacer l'icône du burger et la liste */
-    align-items: center; /* Centrer verticalement */
-    box-sizing: border-box; /* Inclure padding dans la largeur */
+    z-index: 1000;
+    background-color: #0056b3; /* Couleur de fond pour la navigation sticky */
+    padding: 10px 0; /* Espacement intérieur */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.menu-burger-fixed .burger-icon {
-    cursor: pointer;
-    display: none; /* Masquer par défaut sur les grands écrans */
-    flex-direction: column; /* Empiler les barres */
-    justify-content: space-between; /* Espacer les barres */
-    width: 30px;
-    height: 20px;
-}
-
-.menu-burger-fixed .burger-icon span {
-    display: block;
-    width: 100%;
-    height: 2px;
-    background-color: white;
-    transition: transform 0.3s ease, opacity 0.3s ease; /* Transition pour l'animation */
-}
-
-/* Animation de l'icône du burger */
-.menu-burger-fixed.active .burger-icon span:nth-child(1) {
-    transform: translateY(9px) rotate(45deg);
-}
-
-.menu-burger-fixed.active .burger-icon span:nth-child(2) {
-    opacity: 0;
-}
-
-.menu-burger-fixed.active .burger-icon span:nth-child(3) {
-    transform: translateY(-9px) rotate(-45deg);
-}
-
-.menu-burger-fixed ul {
-    list-style: none;
-    margin: 0;
+nav ul {
+    list-style-type: none;
     padding: 0;
-    display: flex; /* Afficher les éléments horizontalement par défaut */
+    margin: 0;
+    display: flex; /* Aligner les éléments horizontalement */
+    justify-content: center; /* Centrer les éléments */
+    flex-wrap: wrap; /* Permettre le retour à la ligne sur petits écrans */
 }
 
-.menu-burger-fixed li {
-    margin: 0 15px; /* Espacement entre les éléments */
+nav li {
+    margin: 5px 15px; /* Espacement entre les éléments */
 }
 
-.menu-burger-fixed a {
-    text-decoration: none;
+nav a {
     color: white;
+    text-decoration: none;
     font-weight: bold;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease; /* Transition douce au survol */
 }
 
-.menu-burger-fixed a:hover {
-    color: #a0d2eb;
+nav a:hover {
+    color: #a0d2eb; /* Couleur au survol */
+    text-decoration: underline;
 }
-
-/* Styles pour le menu déroulant (sur petits écrans) */
-/* Note: Dans cette implémentation, les liens principaux deviennent le menu déroulant sur mobile */
-/* Si vous aviez des sous-menus, ils auraient leurs propres styles ici */
-.menu-dropdown {
-    /* Ces styles sont plus génériques si vous utilisez un élément séparé pour un menu déroulant */
-    /* Dans votre cas, la liste ul principale se comporte comme le menu déroulant sur mobile */
-}
-
-/* Afficher le menu déroulant quand le menu burger est actif (sur petits écrans) */
-.menu-burger-fixed.active .menu-dropdown {
-    /* Ces styles sont plus génériques si vous utilisez un élément séparé pour un menu déroulant */
-}
-
-/* Ajustements pour le contenu principal pour ne pas être caché par le menu fixe */
-main.container {
-    margin-top: 60px; /* Ajouter une marge en haut égale à la hauteur du menu burger */
-}
-
-
-/* Responsive Design pour le menu burger */
-@media (max-width: 768px) {
-    .menu-burger-fixed .burger-icon {
-        display: flex; /* Afficher l'icône du burger */
-    }
-
-    .menu-burger-fixed ul {
-        display: none; /* Masquer la liste de navigation par défaut */
-        flex-direction: column; /* Empiler les éléments du menu déroulant */
-        width: 100%;
-        position: absolute; /* Positionner la liste absolument sous le menu fixe */
-        top: 50px; /* Ajuster en fonction de la hauteur de votre menu fixe sur mobile */
-        left: 0;
-        background-color: #0056b3; /* Couleur de fond du menu déroulant */
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Afficher la liste de navigation quand le menu burger est actif */
-    .menu-burger-fixed.active ul {
-         display: flex; /* Afficher la liste en colonne */
-    }
-
-    .menu-burger-fixed li {
-         margin: 0; /* Enlever la marge horizontale sur mobile */
-    }
-
-    .menu-burger-fixed a {
-        display: block; /* S'assurer que les liens prennent toute la largeur */
-        padding: 10px 20px; /* Ajouter du padding vertical et horizontal */
-        text-align: left; /* Aligner le texte à gauche */
-    }
-
-     .menu-burger-fixed a:hover {
-         background-color: #004085; /* Couleur de survol pour les liens du menu déroulant */
-     }
-
-    /* Ajuster la marge du contenu principal pour le menu fixe sur mobile */
-    main.container {
-        margin-top: 50px; /* Ajuster la marge si la hauteur du menu change sur mobile */
-    }
-}
-/* --- Fin des Styles pour le Menu Burger Fixe --- */
-
 
 /* Sections de contenu */
 .section-content {
@@ -303,8 +206,8 @@ main.container {
 }
 
 /* Images de prix directes dans les sections (comme Prix2.png, Prix4.1.png) */
-/* Ciblage plus spécifique pour les images directement enfants d'un li dans .solution-list */
-.solution-list li > img {
+/* Ciblage plus spécifique pour les images directes dans les li de solution */
+.solution-list li > img { /* Cibler les images directement enfants d'un li dans .solution-list */
     max-width: 100%; /* Limite la largeur de l'image à celle du conteneur parent (le li) */
     height: auto; /* Maintient le ratio d'aspect */
     display: block; /* Aide à gérer l'espace blanc sous l'image */
@@ -434,18 +337,14 @@ main.container {
         font-size: 1.8em;
     }
 
-    /* Ces règles pour nav ul et nav li sont maintenant gérées par .menu-burger-fixed ul et .menu-burger-fixed li dans le media query */
-    /* Vous pouvez les commenter ou les supprimer si elles ne sont pas utilisées ailleurs */
-    /*
     nav ul {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: column; /* Empiler les éléments de navigation */
+        align-items: center; /* Centrer les éléments */
     }
 
     nav li {
-        margin: 5px 0;
+        margin: 5px 0; /* Espacement vertical */
     }
-    */
 
     .section-content {
         padding: 20px;
