@@ -7,9 +7,8 @@
     <link rel="icon" type="image/png" href="im/logo.png">
     <link rel="stylesheet" href="style.css">
     <script type="module" src="auth.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <script src="slider.js" defer></script>
-    <script type="module" src="auth.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
 </head>
 <body>
@@ -267,6 +266,38 @@
 
     </section>
 </main>
+
+
+<script type="module" src="auth.js"></script>
+<script src="slider.js" defer></script>
+
+
+<script>
+  // Attendre  DOM soit entièrement chargé avant d'exécuter le script
+  document.addEventListener('DOMContentLoaded', () => {
+      const burgerIcon = document.querySelector('.burger-icon');
+      const menuBurgerFixed = document.querySelector('.menu-burger-fixed');
+      const navLinks = document.querySelectorAll('.menu-burger-fixed ul li a'); // Sélectionnez les liens
+
+      // Vérifiez si les éléments existent avant d'ajouter des écouteurs
+      if (burgerIcon && menuBurgerFixed && navLinks.length > 0) {
+          burgerIcon.addEventListener('click', () => {
+              menuBurgerFixed.classList.toggle('active');
+          });
+
+          // Fermer le menu quand un lien est cliqué (sur mobile)
+          navLinks.forEach(link => {
+              link.addEventListener('click', () => {
+                  if (window.innerWidth <= 768) { // Appliquer seulement sur les petits écrans
+                      menuBurgerFixed.classList.remove('active');
+                  }
+              });
+          });
+      } else {
+          console.error("Erreur: Impossible de trouver les éléments du menu burger. Vérifiez vos sélecteurs.");
+      }
+  });
+</script>
 
 </body>
 </html>
