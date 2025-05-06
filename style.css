@@ -22,29 +22,42 @@ header {
     padding: 20px 0; /* Espacement intérieur */
     text-align: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Ombre légère */
+    /* Supprimer la hauteur fixe ici si vous l'aviez mise */
 }
 
 header h1 {
     margin: 0;
     font-size: 2.5em; /* Taille de titre plus grande */
+    margin-bottom: 15px; /* Ajouter un peu d'espace sous le titre */
 }
+
+/* Styles pour le conteneur à l'intérieur du header pour la disposition */
+header .container {
+    display: flex; /* Utiliser flexbox pour aligner h1 et nav */
+    flex-direction: column; /* Empiler h1 et nav par défaut */
+    align-items: center; /* Centrer horizontalement les éléments empilés */
+    padding-top: 0; /* S'assurer que le padding du header est utilisé */
+    padding-bottom: 0; /* S'assurer que le padding du header est utilisé */
+}
+
 
 /* --- Styles pour le Menu Burger Fixe --- */
 .menu-burger-fixed {
     background-color: #0056b3; /* Utiliser la couleur de fond de votre nav existante */
     color: white;
     padding: 10px 20px; /* Ajouter du padding pour l'espacement */
-    position: fixed; /* Clé pour rester en haut */
-    top: 0;
-    left: 0; /* S'assurer qu'il commence à gauche */
-    width: 100%; /* Important pour couvrir tout l'écran */
-    z-index: 1000; /* Assurez-vous qu'il est au-dessus de tout */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Garder l'ombre */
+    position: static; /* Par défaut, le nav n'est PAS fixe sur les grands écrans */
+    top: auto; /* Réinitialiser top */
+    left: auto; /* Réinitialiser left */
+    width: auto; /* Réinitialiser width */
+    z-index: auto; /* Réinitialiser z-index */
+    box-shadow: none; /* Enlever l'ombre du menu fixe sur les grands écrans */
     display: flex; /* Utiliser flexbox pour aligner les éléments */
-    justify-content: space-between; /* Espacer l'icône du burger et la liste */
+    justify-content: center; /* Centrer les liens horizontalement */
     align-items: center; /* Centrer verticalement */
     box-sizing: border-box; /* Inclure padding dans la largeur */
-    height: 50px; /* Ajoutez une hauteur explicite pour le menu fixe */
+    /* height: auto;  // Laissez la hauteur s'adapter au contenu */
+    margin-top: 0; /* S'assurer qu'il n'y a pas de marge supérieure inutile */
 }
 
 .menu-burger-fixed .burger-icon {
@@ -114,16 +127,37 @@ header h1 {
 }
 
 /* Ajustements pour le contenu principal pour ne pas être caché par le menu fixe */
+/* Cette marge n'est nécessaire que lorsque le menu est fixe (sur petits écrans) */
 main.container {
-    margin-top: 70px; /* Augmentez cette marge pour laisser de l'espace au menu fixe et au titre */
+    margin-top: 0; /* Réinitialiser la marge supérieure par défaut */
 }
 
 
-/* Responsive Design pour le menu burger */
+/* Responsive Design */
 @media (max-width: 768px) {
-     .menu-burger-fixed {
-         height: 50px; /* Ajustez la hauteur si nécessaire sur mobile */
-     }
+    header h1 {
+        font-size: 1.8em;
+        margin-bottom: 10px; /* Ajuster la marge sous le titre sur mobile */
+    }
+
+    /* Le conteneur du header n'a plus besoin d'être flex-direction column sur mobile */
+    header .container {
+        display: block; /* Revenir à un affichage par défaut */
+        text-align: center; /* Centrer le texte */
+    }
+
+    /* Le menu devient fixe sur les petits écrans */
+    .menu-burger-fixed {
+         position: fixed; /* Le menu devient fixe */
+         top: 0;
+         left: 0;
+         width: 100%;
+         z-index: 1000;
+         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Ajouter l'ombre */
+         height: 50px; /* Hauteur du menu fixe sur mobile */
+         padding: 10px 20px; /* Ajuster le padding */
+         justify-content: space-between; /* Espacer l'icône du burger et la liste */
+    }
 
     .menu-burger-fixed .burger-icon {
         display: flex; /* Afficher l'icône du burger */
@@ -162,7 +196,7 @@ main.container {
 
     /* Ajuster la marge du contenu principal pour le menu fixe sur mobile */
     main.container {
-        margin-top: 60px; /* Ajuster la marge si la hauteur du menu change sur mobile */
+        margin-top: 80px; /* Ajouter une marge supérieure pour l'espace du titre et du menu fixe */
     }
 }
 /* --- Fin des Styles pour le Menu Burger Fixe --- */
@@ -201,7 +235,6 @@ main.container {
 .section-content ul {
     list-style-type: disc;
     padding-left: 25px;
-    margin-bottom: 15px;
 }
 
 .section-content li {
@@ -439,70 +472,70 @@ main.container {
 @media (max-width: 768px) {
     header h1 {
         font-size: 1.8em;
+        margin-bottom: 10px; /* Ajuster la marge sous le titre sur mobile */
     }
 
-    /* Ces règles pour nav ul et nav li sont maintenant gérées par .menu-burger-fixed ul et .menu-burger-fixed li dans le media query */
-    /* Vous pouvez les commenter ou les supprimer si elles ne sont pas utilisées ailleurs */
-    /*
-    nav ul {
-        flex-direction: column;
-        align-items: center;
+    /* Le conteneur du header n'a plus besoin d'être flex-direction column sur mobile */
+    header .container {
+        display: block; /* Revenir à un affichage par défaut */
+        text-align: center; /* Centrer le texte */
     }
 
-    nav li {
-        margin: 5px 0;
-    }
-    */
-
-    .section-content {
-        padding: 20px;
-    }
-
-    .section-content h2 {
-        font-size: 1.6em;
-    }
-
-    .section-content h3 {
-        font-size: 1.3em;
+    /* Le menu devient fixe sur les petits écrans */
+    .menu-burger-fixed {
+         position: fixed; /* Le menu devient fixe */
+         top: 0;
+         left: 0;
+         width: 100%;
+         z-index: 1000;
+         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Ajouter l'ombre */
+         height: 50px; /* Hauteur du menu fixe sur mobile */
+         padding: 10px 20px; /* Ajuster le padding */
+         justify-content: space-between; /* Espacer l'icône du burger et la liste */
     }
 
-    .antenna-details {
-        flex-direction: column; /* Empiler les détails d'antenne */
-        align-items: flex-start; /* Aligner à gauche */
+    .menu-burger-fixed .burger-icon {
+        display: flex; /* Afficher l'icône du burger */
     }
 
-    .antenna-details ul {
-        min-width: auto; /* Enlever la largeur minimale */
-        margin-bottom: 20px;
+    .menu-burger-fixed ul {
+        display: none; /* Masquer la liste de navigation par default */
+        flex-direction: column; /* Empiler les éléments du menu déroulant */
+        width: 100%;
+        position: absolute; /* Positionner la liste absolument sous le menu fixe */
+        top: 50px; /* Ajuster en fonction de la hauteur de votre menu fixe sur mobile */
+        left: 0;
+        background-color: #0056b3; /* Couleur de fond du menu déroulant */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        justify-content: center; /* Centrer les liens sur mobile */
     }
 
-    .pdf-viewer iframe {
-        height: 400px; /* Réduire la hauteur des iframes PDF sur petits écrans */
+    /* Afficher la liste de navigation quand le menu burger est actif */
+    .menu-burger-fixed.active ul {
+         display: flex; /* Afficher la liste en colonne */
     }
 
-    /* Ajuste les images directes dans les sections sur petits écrans */
-    .section-content > img {
-        max-width: 100%; /* S'assurer qu'elles ne dépassent pas */
+    .menu-burger-fixed li {
+         margin: 0; /* Enlever la marge horizontale sur mobile */
     }
 
-     /* Ajuste la largeur maximale du slider sur petits écrans */
-    .slider-container {
-        max-width: 100%; /* Généralement 100% sur petits écrans */
+    .menu-burger-fixed a {
+        display: block; /* S'assurer que les liens prennent toute la largeur */
+        padding: 10px 20px; /* Ajouter du padding vertical et horizontal */
+        text-align: center; /* Centrer le texte des liens sur mobile */
     }
 
-     /* Ajuste la taille des boutons du slider sur petits écrans */
-    .slider-container .prev-btn,
-    .slider-container .next-btn {
-        padding: 8px 12px;
-        font-size: 1.2em;
-    }
+     .menu-burger-fixed a:hover {
+         background-color: #004085; /* Couleur de survol pour les liens du menu déroulant */
+     }
 
-    /* Si tu as défini une hauteur fixe pour les images, ajuste-la pour les petits écrans */
-    /* .slider img {
-        height: 300px; /* Hauteur réduite pour les petits écrans */
-        /* object-fit: contain; /* ou 'cover' */
-    /* } */
+    /* Ajuster la marge du contenu principal pour le menu fixe sur mobile */
+    main.container {
+        margin-top: 80px; /* Ajouter une marge supérieure pour l'espace du titre et du menu fixe */
+    }
 }
+/* --- Fin des Styles pour le Menu Burger Fixe --- */
+
 
 /* Règle générale pour toutes les images */
 img {
