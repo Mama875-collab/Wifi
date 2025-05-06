@@ -1,12 +1,8 @@
-// auth.js (Version Modulaire - Inclut la vérification d'email pour redirection)
 
-// Importez les fonctions nécessaires des modules Firebase
-// IMPORTANT : Utilisez les URLs CDN complètes pour les imports directs dans le navigateur !
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js'; // <-- Corrigé ici
-import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js'; // <-- Corrigé ici
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js'; 
+import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js'; 
 
-// Votre configuration d'application web Firebase
-// Remplacez avec votre configuration Firebase réelle
+
 const firebaseConfig = {
   apiKey: "AIzaSyAzq0LsdEssEyGEKIdFgNsxTP0FGmwZYIU",
   authDomain: "wifi-24532.firebaseapp.com",
@@ -18,15 +14,13 @@ const firebaseConfig = {
 };
 
 // Initialiser Firebase
-// Utilisation de try/catch pour être sûr même si l'app est déjà initialisée ailleurs
+
 let app;
 try {
   app = initializeApp(firebaseConfig);
 } catch (error) {
   console.warn("Firebase app already initialized. Skipping initialization.");
-  // Si vous avez besoin de l'instance dans ce cas, décommentez les lignes ci-dessous et l'import getApp
-  // import { getApp } from 'firebase/app';
-  // app = app || getApp(); // Assurez-vous d'assigner si getApp réussit
+
 }
 
 // Obtenir l'instance Auth
@@ -43,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // L'utilisateur est connecté MAIS l'email n'est PAS vérifié.
                 console.log('Email is not verified. Redirecting to email verification page.');
                 // Rediriger vers la page de vérification d'email
-                window.location.replace('/verify-email.html'); // Assurez-vous que le chemin est correct
+                window.location.replace('verify-email.html'); // Assurez-vous que le chemin est correct
                 // Utiliser replace() est conseillé ici pour empêcher l'utilisateur de revenir
                 // à la page en utilisant le bouton retour du navigateur avant que l'email ne soit vérifié.
                 return; // Arrêter l'exécution ici pour cet état
