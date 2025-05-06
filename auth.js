@@ -1,9 +1,9 @@
 // auth.js (Version Modulaire - Inclut la vérification d'email pour redirection)
 
 // Importez les fonctions nécessaires des modules Firebase
-// Utilisez les URLs CDN complètes pour les imports directs dans le navigateur
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js'; // Importer initializeApp depuis le CDN
-import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js'; // Importer getAuth et onAuthStateChanged depuis le CDN
+// IMPORTANT : Utilisez les URLs CDN complètes pour les imports directs dans le navigateur !
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js'; // <-- Corrigé ici
+import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js'; // <-- Corrigé ici
 
 // Votre configuration d'application web Firebase
 // Remplacez avec votre configuration Firebase réelle
@@ -26,7 +26,7 @@ try {
   console.warn("Firebase app already initialized. Skipping initialization.");
   // Si vous avez besoin de l'instance dans ce cas, décommentez les lignes ci-dessous et l'import getApp
   // import { getApp } from 'firebase/app';
-  // app = getApp();
+  // app = app || getApp(); // Assurez-vous d'assigner si getApp réussit
 }
 
 // Obtenir l'instance Auth
