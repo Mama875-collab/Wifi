@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Lire les paramètres de l'URL
     const mode = getParameterByName('mode');
     const actionCode = getParameterByName('oobCode'); // Le code unique pour l'action
-    const continueUrl = getParameterByName('continueUrl'); // L'URL où retourner après
+    const continueUrl = getParameterByName('https://mama875-collab.github.io/next.html'); // L'URL où retourner après
     const lang = getParameterByName('lang'); // Langue (optionnel pour l'UI)
 
     // Optionnel: définir la langue pour le SDK si vous voulez gérer les messages d'erreur localisés
@@ -73,10 +73,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 continueLinkElement.href = continueUrl; // Définir l'URL du lien
                 continueLinkElement.style.display = 'inline-block'; // Afficher le lien
             } else {
-                 // Sinon, vous pourriez afficher un lien vers la page d'accueil par défaut
-                 // continueLinkElement.href = '/'; // Lien vers votre page d'accueil
-                 // continueLinkElement.textContent = 'Retour à l\'accueil';
-                 // continueLinkElement.style.display = 'inline-block';
+                  afficher un lien vers la page d'accueil par défaut
+                  continueLinkElement.href = 'https://mama875-collab.github.io/index.html'; // Lien vers page d'accueil
+                  continueLinkElement.textContent = 'Retour à l\'accueil';
+                  continueLinkElement.style.display = 'inline-block';
             }
 
         }).catch((error) => {
