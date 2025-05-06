@@ -1,10 +1,10 @@
-// verify-email.js (Version Modulaire)
 
-// Importez les fonctions nécessaires des modules Firebase
-import { initializeApp } from 'firebase/app';
-import { getAuth, applyActionCode } from 'firebase/auth'; // On a besoin de applyActionCode pour vérifier l'email
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js';
+import { getAuth, onAuthStateChanged, sendEmailVerification } from 'https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js';
 
 
+
+// Votre configuration d'application web Firebase 
 const firebaseConfig = {
   apiKey: "AIzaSyAzq0LsdEssEyGEKIdFgNsxTP0FGmwZYIU",
   authDomain: "wifi-24532.firebaseapp.com",
@@ -16,96 +16,102 @@ const firebaseConfig = {
 };
 
 // Initialiser Firebase
-// Utilisation de try/catch pour être sûr même si l'app est déjà initialisée ailleurs
 let app;
 try {
   app = initializeApp(firebaseConfig);
 } catch (error) {
   console.warn("Firebase app already initialized. Skipping initialization.");
-  // Si vous avez besoin de l'instance dans ce cas, vous pouvez la récupérer comme ceci :
-  // import { getApp } from 'firebase/app'; // Ajoutez cet import
-  // app = getApp();
+
 }
+
 
 // Obtenir l'instance Auth
 const auth = getAuth(app);
 
-// Fonction utilitaire pour lire les paramètres de l requête (issue des facts)
-function getParameterByName(name) {
-    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-    const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-    const results = regex.exec(location.search);
-    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+// ----- Références aux éléments HTML -----
+const loadingMessage = document.getElementById('loading-message');
+const verificationPendingSection = document.getElementById('verification-pending');
+const resendEmailBtn = document.getElementById('resend-email-btn');
+const resendSuccessMessage = document.getElementById('resend-success');
+const resendErrorMessage = document.getElementById('resend-error');
+const verificationSuccessSection = document.getElementById('verification-success');
+const notLoggedInSection = document.getElementById('not-logged-in');
+
+// ----- Fonction pour masquer toutes les sections et messages spécifiques -----
+function hideAllSections() {
+    loadingMessage.style.display = 'none';
+    verificationPendingSection.style.display = 'none';
+    resendSuccessMessage.style.display = 'none';
+    resendErrorMessage.style.display = 'none';
+    verificationSuccessSection.style.display = 'none';
+    notLoggedInSection.style.display = 'none';
 }
 
+
+// ----- Logique de vérification d'état d'authentification -----
 document.addEventListener('DOMContentLoaded', function() {
-    const statusMessageElement = document.getElementById('statusMessage');
-    const continueLinkElement = document.getElementById('continueLink');
+    onAuthStateChanged(auth, (user) => {
+        hideAllSections(); // Masquer tout d'abord
 
-    // Lire les paramètres de l'URL
-    const mode = getParameterByName('mode');
-    const actionCode = getParameterByName('oobCode'); // Le code unique pour l'action
-    const continueUrl = getParameterByName('https://mama875-collab.github.io/next.html'); // L'URL où retourner après
-    const lang = getParameterByName('lang'); // Langue (optionnel pour l'UI)
+        if (user) {
+            // Utilisateur connecté
+            console.log('User state changed:', user.uid);
 
-    // Optionnel: définir la langue pour le SDK si vous voulez gérer les messages d'erreur localisés
-    if (lang) {
-         // Note: setting languageCode might affect other operations on this auth instance
-         // For email action handlers, the 'lang' param is mainly for YOU to localize the page UI
-         // auth.languageCode = lang;
-         console.log('Language parameter detected:', lang);
-         // Ici, vous utiliseriez 'lang' pour charger les textes de votre UI dans la bonne langue
-         // Pour cet exemple simple, nous restons en français.
-    }
+            if (user.emailVerified) {
+                // L'email est VÉRIFIÉ
+                console.log('Email is verified. Redirecting...');
+                verificationSuccessSection.style.display = 'block'; // Afficher le message de succès
+                window.location.replace('https://mama875-collab.github.io/Wifi/next.html');
 
-
-    // Vérifier que c'est bien une action de vérification d'email
-    if (mode === 'verifyEmail' && actionCode) {
-        // Tenter d'appliquer le code d'action (vérifier l'email)
-        applyActionCode(auth, actionCode).then(() => {
-            // Succès : l'email est maintenant vérifié !
-            console.log('Email verification successful.');
-            statusMessageElement.textContent = 'Votre adresse email a été vérifiée avec succès !';
-            statusMessageElement.className = 'success'; // Ajouter une classe pour le style
-
-            // Si une URL de continuation existe, afficher le lien
-            if (continueUrl) {
-                continueLinkElement.href = continueUrl; // Définir l'URL du lien
-                continueLinkElement.style.display = 'inline-block'; // Afficher le lien
             } else {
-                  afficher un lien vers la page d'accueil par défaut
-                  continueLinkElement.href = 'https://mama875-collab.github.io/index.html'; // Lien vers page d'accueil
-                  continueLinkElement.textContent = 'Retour à l\'accueil';
-                  continueLinkElement.style.display = 'inline-block';
+                // L'email n'est PAS vérifié
+                console.log('User is signed in but email is NOT verified.');
+                verificationPendingSection.style.display = 'block'; // Afficher la section en attente
+
+                // Note: On n'envoie PAS l'email automatiquement ici à chaque chargement/changement d'état.
+                // On se fie au bouton "Renvoyer".
+
             }
 
-        }).catch((error) => {
-            // Échec de la vérification (code invalide, expiré, etc.)
-            console.error('Email verification failed:', error);
-            let errorMessage = 'La vérification de l\'email a échoué.';
+        } else {
+            // Aucun utilisateur connecté
+            console.log('No user is signed in. Redirecting to login.');
+            hideAllSections(); // On remasque tout
+            notLoggedInSection.style.display = 'block'; // Afficher le message "pas connecté"
+            // Rediriger vers la page de connexion 
+            window.location.replace('index.html'); // Chemin relatif
+        }
+    });
 
-            // Vous pouvez rendre le message d'erreur plus spécifique en fonction du code d'erreur Firebase
-            switch (error.code) {
-                case 'auth/invalid-action-code':
-                    errorMessage = 'Le code de vérification est invalide ou a expiré.';
-                    break;
-                case 'auth/user-disabled':
-                    errorMessage = 'Votre compte a été désactivé.';
-                    break;
-                case 'auth/user-not-found':
-                     errorMessage = 'Aucun utilisateur trouvé pour ce code.';
-                     break;
-                // Ajoutez d'autres codes d'erreur si nécessaire
+    // ----- Gestionnaire de clic pour le bouton de renvoi d'email -----
+    if(resendEmailBtn) { // S'assurer que le bouton existe
+        resendEmailBtn.addEventListener('click', async () => {
+            // Désactiver le bouton pour éviter les clics multiples
+            resendEmailBtn.disabled = true;
+            resendSuccessMessage.style.display = 'none'; // Masquer messages précédents
+            resendErrorMessage.style.display = 'none';
+
+            const user = auth.currentUser; // Obtenir l'utilisateur actuellement connecté
+             if (user) {
+                try {
+                    await sendEmailVerification(user);
+                    console.log('Email de vérification renvoyé !');
+                    resendSuccessMessage.style.display = 'block'; // Afficher succès
+                } catch (error) {
+                    console.error('Erreur lors du renvoi de l\'email de vérification :', error);
+                    resendErrorMessage.style.display = 'block'; // Afficher erreur
+                } finally {
+                    // Réactiver le bouton après un court délai (facultatif, mais bien pour l'UX)
+                    setTimeout(() => {
+                         resendEmailBtn.disabled = false;
+                     }, 2000); // Réactiver après 2 secondes
+                }
+            } else {
+                 console.error("Impossible de renvoyer l'email : aucun utilisateur n'est connecté.");
+                 resendErrorMessage.style.display = 'block';
+                 resendErrorMessage.innerText = "Aucun utilisateur connecté. Redirection...";
+               
             }
-
-            statusMessageElement.textContent = errorMessage + ' Veuillez réessayer ou contacter le support.';
-            statusMessageElement.className = 'error'; // Ajouter une classe pour le style
         });
-
     } else {
-        // Mode invalide ou code manquant
-        console.error('Invalid mode or missing action code.');
-        statusMessageElement.textContent = 'Lien de vérification invalide. Veuillez réessayer.';
-        statusMessageElement.className = 'error';
-    }
-});
+        console.error("Bouton #resend-
