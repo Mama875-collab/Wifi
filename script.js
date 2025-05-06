@@ -20,20 +20,36 @@ const analytics = getAnalytics(app);
 const auth = getAuth(app);
 
 // Fonction de connexion
-document.getElementById('loginButton').addEventListener('click', login);
+// Assurez-vous que l'élément avec l'ID 'loginButton' existe dans votre HTML
+// (probablement dans un autre fichier HTML si cette page n'est pas la page de connexion)
+// Vous pourriez vouloir déplacer cette logique de connexion vers la page où le formulaire de connexion est présent.
+const loginButton = document.getElementById('loginButton');
+if (loginButton) {
+    loginButton.addEventListener('click', login);
+} else {
+    console.warn("Élément avec l'ID 'loginButton' non trouvé. La fonction de connexion ne sera pas attachée.");
+}
+
 
 function login() {
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+
+    // Vérifiez si les éléments email et password existent
+    if (!emailInput || !passwordInput) {
+        console.error("Erreur: Impossible de trouver les champs email ou password pour la connexion.");
+        return;
+    }
+
+    const email = emailInput.value;
+    const password = passwordInput.value;
 
     signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             // Connexion réussie, redirige vers next.html
-            window.location.href = "next.html";  
+            window.location.href = "next.html";
         })
         .catch((error) => {
             alert(error.message); // Afficher le message d'erreur
         });
 }
-
-  

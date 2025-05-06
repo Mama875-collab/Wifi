@@ -7,14 +7,21 @@
     <link rel="icon" type="image/png" href="im/logo.png">
     <link rel="stylesheet" href="style.css">
     <script type="module" src="auth.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <script src="slider.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
+
 <header>
     <div class="container">
-        <h1>Projet d'Installation d'un Wi-Fi Public</h1>
-        <nav>
+        <nav class="menu-burger-fixed">
+            <div class="burger-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <h1>Projet d'Installation d'un Wi-Fi Public</h1>
             <ul>
                 <li><a href="#cahier-des-charges">Cahier des charges</a></li>
                 <li><a href="#caracteristiques">Caractéristiques des appareils</a></li>
@@ -50,8 +57,8 @@
             </li>
         </ul>
     </section>
-	
-	<section id="propositions" class="section-content">
+
+    <section id="propositions" class="section-content">
         <h2>Propositions de fonctionnement</h2>
         <ol class="solution-list">
             <li>
@@ -190,19 +197,19 @@
                     <iframe src="simulation/Solution3/Solution_3.pdf" title="Démonstration Solution 3"></iframe>
                     <p><a href="simulation/Solution3/Solution_3.pdf" download class="download-link">Télécharger le PDF</a></p>
                 </div>
-				
-				<div class="slider-container">
+
+                <div class="slider-container">
                     <div class="slider">
                         <img src="simulation/Solution3/Salle_Choiseau_3.png">
                         <img src="simulation/Solution3/Salle_Conseil_3.png">
                         <img src="simulation/Solution3/Fournil_3.png">
                         <img src="simulation/Solution3/Vulcain_3.png">
-                        <img src="simulation/Solution3/Mairie_3.png">   
+                        <img src="simulation/Solution3/Mairie_3.png">
                     </div>
-                    <button class="prev-btn">&lt;</button>
-                    <button class="next-btn">&gt;</button>
+                    <button class="prev-btn"><</button>
+                    <button class="next-btn">></button>
                     <div class="slider-dots">
-                        
+
                     </div>
                 </div>
             </li>
@@ -221,9 +228,9 @@
                     <iframe src="simulation/Solution4/Opt2/Solution_4_2.pdf" title="Démonstration Solution 4 Option 2"></iframe>
                     <p><a href="simulation/Solution4/Opt2/Solution_4_2.pdf" download class="download-link">Télécharger le PDF</a></p>
                 </div>
-				<img src="simulation/Solution4/Opt2/Prix_4.2.png" alt="Estimation du prix Solution 4 Option 2">
+                <img src="simulation/Solution4/Opt2/Prix_4.2.png" alt="Estimation du prix Solution 4 Option 2">
 
-                
+
                 <div class="slider-container">
                     <div class="slider">
                         <img src="simulation/Solution4/Opt2/Choiseau_4_2.png" alt="Représentation graphique du signal - Choiseau">
@@ -231,33 +238,65 @@
                         <img src="simulation/Solution4/Opt2/Fournil_4_2.png" alt="Représentation graphique du signal - Fournil">
                         <img src="simulation/Solution4/Opt2/Vulcain_4_2.png" alt="Représentation graphique du signal - Vulcain">
                         <img src="simulation/Solution4/Opt2/Mairie_4_2.png" alt="Représentation graphique du signal - Mairie">
-                        
+
                     </div>
-                    <button class="prev-btn">&lt;</button>
-                    <button class="next-btn">&gt;</button>
+                    <button class="prev-btn"><</button>
+                    <button class="next-btn">></button>
                     <div class="slider-dots">
-                        
+
                     </div>
                 </div>
-                
+
 
             </li>
 
         </ol>
     </section>
-	
-	<section id="ConfNano" class="section-content">
-	<h2>Configuration du routeur hAP ax²</h2>
-	<p>Comme demandé dans le cahier des charges, nous voulons un formulaire de connexion simple et similaire à celui de Wifi4EU de ce style :</p>
-	<img src="im/w4EU.png" alt="Image du formulaire de connexion du Wifi4EU">
-	<p>Mais notre objectif est d'avoir un formulaire qui ressemble plutôt à celui-ci :</p>
-	<img src="im/form.png" alt="Image du formulaire de connexion voulu">
-	<p>Pour configurer cette interface nous allons avoir besoin du site pour <a href="https://help.mikrotik.com/docs/spaces/ROS/pages/87162881/Hotspot+customisation" target="blank">la documentation</a></p>
-	
-	
-	
-	</section>
+
+    <section id="ConfNano" class="section-content">
+    <h2>Configuration du routeur hAP ax²</h2>
+    <p>Comme demandé dans le cahier des charges, nous voulons un formulaire de connexion simple et similaire à celui de Wifi4EU de ce style :</p>
+    <img src="im/w4EU.png" alt="Image du formulaire de connexion du Wifi4EU">
+    <p>Mais notre objectif est d'avoir un formulaire qui ressemble plutôt à celui-ci :</p>
+    <img src="im/form.png" alt="Image du formulaire de connexion voulu">
+    <p>Pour configurer cette interface nous allons avoir besoin du site pour <a href="https://help.mikrotik.com/docs/spaces/ROS/pages/87162881/Hotspot+customisation" target="blank">la documentation</a></p>
+
+
+
+    </section>
 </main>
+
+
+<script type="module" src="auth.js"></script>
+<script src="slider.js" defer></script>
+
+
+<script>
+  // Attendre  DOM soit entièrement chargé avant d'exécuter le script
+  document.addEventListener('DOMContentLoaded', () => {
+      const burgerIcon = document.querySelector('.burger-icon');
+      const menuBurgerFixed = document.querySelector('.menu-burger-fixed');
+      const navLinks = document.querySelectorAll('.menu-burger-fixed ul li a'); // Sélectionnez les liens
+
+      // Vérifiez si les éléments existent avant d'ajouter des écouteurs
+      if (burgerIcon && menuBurgerFixed && navLinks.length > 0) {
+          burgerIcon.addEventListener('click', () => {
+              menuBurgerFixed.classList.toggle('active');
+          });
+
+          // Fermer le menu quand un lien est cliqué (sur mobile)
+          navLinks.forEach(link => {
+              link.addEventListener('click', () => {
+                  if (window.innerWidth <= 768) { // Appliquer seulement sur les petits écrans
+                      menuBurgerFixed.classList.remove('active');
+                  }
+              });
+          });
+      } else {
+          console.error("Erreur: Impossible de trouver les éléments du menu burger. Vérifiez vos sélecteurs.");
+      }
+  });
+</script>
 
 </body>
 </html>
