@@ -1,3 +1,34 @@
+/* Général */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    background-color: #f4f7f6; /* Couleur de fond plus douce */
+    color: #333; /* Couleur de texte par défaut */
+    line-height: 1.6; /* Espacement des lignes amélioré */
+    overflow-x: hidden; /* Cache le défilement horizontal global si un élément dépasse accidentellement */
+}
+
+.container {
+    max-width: 1200px; /* Largeur maximale du contenu */
+    margin: 0 auto; /* Centrer le contenu */
+    padding: 0 20px; /* Espacement intérieur */
+    box-sizing: border-box; /* S'assure que le padding est inclus dans la largeur */
+}
+
+/* Header */
+header {
+    background: linear-gradient(to right, #007BFF, #0056b3); /* Dégradé pour l'en-tête */
+    color: white;
+    padding: 20px 0; /* Espacement intérieur */
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Ombre légère */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em; /* Taille de titre plus grande */
+}
+
 /* --- Styles pour le Menu Burger Fixe --- */
 .menu-burger-fixed {
     background-color: #0056b3; /* Utiliser la couleur de fond de votre nav existante */
@@ -13,6 +44,7 @@
     justify-content: space-between; /* Espacer l'icône du burger et la liste */
     align-items: center; /* Centrer verticalement */
     box-sizing: border-box; /* Inclure padding dans la largeur */
+    height: 50px; /* Ajoutez une hauteur explicite pour le menu fixe */
 }
 
 .menu-burger-fixed .burger-icon {
@@ -50,7 +82,7 @@
     margin: 0;
     padding: 0;
     display: flex; /* Afficher les éléments horizontalement par défaut */
-    justify-content: center; /* <-- Ajoutez ou modifiez cette ligne pour centrer les liens */
+    justify-content: center; /* Centrer les liens */
 }
 
 .menu-burger-fixed li {
@@ -83,12 +115,16 @@
 
 /* Ajustements pour le contenu principal pour ne pas être caché par le menu fixe */
 main.container {
-    margin-top: 60px; /* Ajouter une marge en haut égale à la hauteur du menu burger */
+    margin-top: 70px; /* Augmentez cette marge pour laisser de l'espace au menu fixe et au titre */
 }
 
 
 /* Responsive Design pour le menu burger */
 @media (max-width: 768px) {
+     .menu-burger-fixed {
+         height: 50px; /* Ajustez la hauteur si nécessaire sur mobile */
+     }
+
     .menu-burger-fixed .burger-icon {
         display: flex; /* Afficher l'icône du burger */
     }
@@ -102,7 +138,7 @@ main.container {
         left: 0;
         background-color: #0056b3; /* Couleur de fond du menu déroulant */
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        justify-content: center; /* <-- Ajoutez ou modifiez cette ligne pour centrer les liens sur mobile */
+        justify-content: center; /* Centrer les liens sur mobile */
     }
 
     /* Afficher la liste de navigation quand le menu burger est actif */
@@ -117,7 +153,7 @@ main.container {
     .menu-burger-fixed a {
         display: block; /* S'assurer que les liens prennent toute la largeur */
         padding: 10px 20px; /* Ajouter du padding vertical et horizontal */
-        text-align: center; /* <-- Modifiez cette ligne pour centrer le texte des liens sur mobile */
+        text-align: center; /* Centrer le texte des liens sur mobile */
     }
 
      .menu-burger-fixed a:hover {
@@ -126,7 +162,7 @@ main.container {
 
     /* Ajuster la marge du contenu principal pour le menu fixe sur mobile */
     main.container {
-        margin-top: 50px; /* Ajuster la marge si la hauteur du menu change sur mobile */
+        margin-top: 60px; /* Ajuster la marge si la hauteur du menu change sur mobile */
     }
 }
 /* --- Fin des Styles pour le Menu Burger Fixe --- */
@@ -281,7 +317,7 @@ main.container {
     display: block; /* Aide à gérer l'espace blanc sous l'image */
     margin: 20px auto; /* Centre l'image et ajoute de l'espace */
     border-radius: 5px;
-    box-shadow: 0 2 px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     box-sizing: border-box; /* Inclure padding/border si présents */
 }
 
