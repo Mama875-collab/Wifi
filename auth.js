@@ -1,10 +1,11 @@
-// auth.js (Version Modulaire - N'inclut PAS la vérification d'email pour redirection)
+// auth.js (Version Modulaire - Inclut la vérification d'email pour redirection)
 
 // Importez les fonctions nécessaires des modules Firebase
 import { initializeApp } from 'firebase/app'; // Importer initializeApp
 import { getAuth, onAuthStateChanged } from 'firebase/auth'; // Importer getAuth et onAuthStateChanged
 
 // Votre configuration d'application web Firebase
+// Remplacez avec votre configuration Firebase réelle
 const firebaseConfig = {
   apiKey: "AIzaSyAzq0LsdEssEyGEKIdFgNsxTP0FGmwZYIU",
   authDomain: "wifi-24532.firebaseapp.com",
@@ -16,7 +17,7 @@ const firebaseConfig = {
 };
 
 // Initialiser Firebase
-// Meilleure pratique pour éviter l'erreur "duplicate-app" si le script est inclus plusieurs fois (ce qu'on a corrigé, mais c'est bien)
+// Utilisation de try/catch pour être sûr même si l'app est déjà initialisée ailleurs
 let app;
 try {
   app = initializeApp(firebaseConfig);
@@ -34,29 +35,30 @@ document.addEventListener('DOMContentLoaded', function() {
     // Écouteur d'état d'authentification
     onAuthStateChanged(auth, (user) => {
         if (user) {
-            // L'utilisateur est connecté.
+            // L'utilisateur est connecté. Maintenant, vérifier si son email est vérifié.
             console.log('User is signed in:', user.uid);
-            // Le contenu de la page s'affiche normalement.
 
-            // --- LA LOGIQUE DE REDIRECTION POUR LA VÉRIFICATION D'EMAIL EST COMMENTÉE OU SUPPRIMÉE ICI ---
-            // if (!user.emailVerified) {
-            //     console.log('Email is not verified. User can still view this page content.');
-            //     // Vous pouvez afficher un message d'avertissement à l'utilisateur ici si vous le souhaitez,
-            //     // mais pas de redirection automatique.
-            // }
-            // ------------------------------------------------------------------------------------------
-
-            // Si l'utilisateur est connecté (vérifié ou non selon la logique ci-dessus)
-            // Proceed to load the content for logged-in users here.
-            console.log('User is authorized to view this page content.');
-            // Ici, vous mettriez le code pour afficher les parties de la page réservées aux utilisateurs connectés,
-            // ou pour charger des données spécifiques à l'utilisateur.
+            if (!user.emailVerified) {
+                // L'utilisateur est connecté MAIS l'email n'est PAS vérifié.
+                console.log('Email is not verified. Redirecting to email verification page.');
+                // Rediriger vers la page de vérification d'email
+                window.location.replace('/verify-email.html'); // Assurez-vous que le chemin est correct
+                // Utiliser replace() est conseillé ici pour empêcher l'utilisateur de revenir
+                // à la page en utilisant le bouton retour du navigateur avant que l'email ne soit vérifié.
+                return; // Arrêter l'exécution ici pour cet état
+            } else {
+                // L'utilisateur est connecté ET l'email est vérifié.
+                console.log('User is signed in and email is verified.');
+                // Le contenu de la page peut être affiché.
+                // C'est ici que vous pouvez ajouter du code pour charger du contenu spécifique
+                // ou afficher des éléments réservés aux utilisateurs vérifiés.
+            }
 
         } else {
             // L'utilisateur N'EST PAS connecté. Redirigez-le vers la page de connexion.
             console.log('No user is signed in. Redirecting to login.');
-            // Utiliser replace() pour ne pas garder la page protégée dans l'historique
-            window.location.replace('login.html'); // Assurez-vous que le chemin vers login.html est correct
+            // Redirection vers la page de connexion
+            window.location.replace('login.html'); // Assurez-vous que le chemin est correct
         }
     });
 });
