@@ -6,19 +6,11 @@
     <title>Projet Wi-Fi Public</title>
     <link rel="icon" type="image/png" href="im/logo.png">
     <link rel="stylesheet" href="style.css">
-
-    <!-- Firebase SDK v8 (Namespaced) - Chargez-les AVANT votre script auth.js -->
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-    <!-- Assurez-vous que cette version 8.10.1 correspond bien à la version que vous utilisiez -->
-
-    <!-- Votre script auth.js - Pas de type="module" ici si vous utilisez le SDK Namespaced -->
-    <script src="auth.js"></script>
-
     <script src="slider.js" defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
+    <script type="module" src="auth.js"></script>
 </head>
+
 
 <body>
 
@@ -276,7 +268,7 @@
 </main>
 
 
-<script type="module" src="auth.js"></script>
+
 <script src="slider.js" defer></script>
 
 
