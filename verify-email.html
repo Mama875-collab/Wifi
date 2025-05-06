@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vérifier votre Email</title>
-    <link rel="stylesheet" href="style.css"> {/* Optionnel : si vous avez un style global */}
+    <link rel="stylesheet" href="style.css"> 
     <style>
-        /* Quelques styles basiques pour la page */
+       
         body {
             font-family: 'Roboto', sans-serif;
             display: flex;
@@ -35,7 +35,7 @@
             margin-bottom: 20px;
         }
         #continueLink {
-            display: none; /* Caché par défaut */
+            display: none; 
             text-decoration: none;
             background-color: #4CAF50;
             color: white;
@@ -53,9 +53,6 @@
             color: #388e3c; /* Vert */
         }
     </style>
-
-    <!-- Votre script JavaScript qui gérera la vérification -->
-    <!-- Chargez-le comme un module -->
     <script type="module" src="verify-email.js"></script>
 
 </head>
@@ -63,7 +60,6 @@
     <div class="container">
         <h1>Vérification d'Email</h1>
         <p id="statusMessage">Vérification en cours...</p>
-        {/* Ce lien sera affiché si la vérification réussit et s'il y a un continueUrl */}
         <a href="#" id="continueLink">Retourner à l'application</a>
     </div>
 </body>
