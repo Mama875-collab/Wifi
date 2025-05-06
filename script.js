@@ -36,4 +36,20 @@ function login() {
         });
 }
 
-  
+  const burgerIcon = document.querySelector('.burger-icon');
+  const menuBurgerFixed = document.querySelector('.menu-burger-fixed');
+  const navLinks = document.querySelectorAll('.menu-burger-fixed ul li a'); // Sélectionnez les liens
+
+  burgerIcon.addEventListener('click', () => {
+    menuBurgerFixed.classList.toggle('active');
+  });
+
+  // Fermer le menu quand un lien est cliqué (sur mobile)
+  navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+          if (window.innerWidth <= 768) { // Appliquer seulement sur les petits écrans
+              menuBurgerFixed.classList.remove('active');
+          }
+      });
+  });
+
