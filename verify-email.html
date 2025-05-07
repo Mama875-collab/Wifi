@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vérification d'Email - Projet Wi-Fi Public</title>
+    <link rel="icon" type="image/png" href="im/logo.png">
+    <link rel="stylesheet" href="style.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Le script qui gère la vérification -->
+    <script type="module" src="verify-email.js"></script>
+</head>
+<body>
+
+    <header>
+        
+        <div class="container">
+             <h1>Vérification de votre adresse email</h1>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section-content">
+            <h2>Veuillez vérifier votre boîte de réception</h2>
+
+           
+            <p id="loading-message">Vérification de votre état...</p>
+
+           
+            <div id="verification-pending" style="display: none;">
+                <p>
+                    Un email de vérification a été envoyé à votre adresse. Veuillez cliquer sur le lien
+                    dans cet email pour activer votre compte.
+                </p>
+                <p>
+                    Si vous n'avez pas reçu l'email (vérifiez vos spams !), vous pouvez en demander un nouveau :
+                </p>
+                <button id="resend-email-btn">Renvoyer l'email de vérification</button>
+
+                <!-- Messages pour le bouton de renvoi -->
+                <p id="resend-success" style="color: green; display: none;">Nouvel email envoyé !</p>
+                <p id="resend-error" style="color: red; display: none;">Erreur lors de l'envoi de l'email. Veuillez réessayer plus tard.</p>
+            </div>
+
+             <!-- Contenu affiché si l'email EST vérifié -->
+            <div id="verification-success" style="display: none;">
+                <p>Votre adresse email a été vérifiée avec succès !</p>
+                <p>Redirection vers l'application...</p>
+              
+                <p><a href="https://mama875-collab.github.io/Wifi/index.html">Cliquez ici si vous n'êtes pas redirigé automatiquement.</a></p>
+            </div>
+
+             <!-- Contenu affiché si aucun utilisateur n'est connecté -->
+             <div id="not-logged-in" style="display: none;">
+                 <p>Vous n'êtes pas connecté.</p>
+                 <p><a href="index.html">Veuillez vous connecter pour accéder à cette page.</a></p>
+             </div>
+
+        </section>
+    </main>
+
+
+
+</body>
+</html>

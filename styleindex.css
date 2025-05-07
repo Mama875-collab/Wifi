@@ -1,0 +1,149 @@
+/* Général */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    background-color: #f4f7f6; /* Couleur de fond plus douce */
+    color: #333; /* Couleur de texte par défaut */
+    line-height: 1.6; /* Espacement des lignes amélioré */
+    overflow-x: hidden; /* Cache le défilement horizontal global si un élément dépasse accidentellement */
+    display: flex; /* Utiliser flexbox sur le body */
+    flex-direction: column; /* Empiler les éléments verticalement */
+    align-items: center; /* Centrer les éléments horizontalement */
+    min-height: 100vh; /* Assure que le body prend au moins toute la hauteur de la vue */
+    padding-top: 20px; /* Ajoutez un peu d'espace en haut */
+}
+
+.container {
+    max-width: 1200px; /* Largeur maximale du contenu */
+    margin: 0 auto; /* Centrer le contenu */
+    padding: 0 20px; /* Espacement intérieur */
+    box-sizing: border-box; /* S'assure que le padding est inclus dans la largeur */
+}
+
+/* Header */
+header {
+    background: linear-gradient(to right, #007BFF, #0056b3); /* Dégradé pour l'en-tête */
+    color: white;
+    padding: 20px 0; /* Espacement intérieur */
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Ombre légère */
+    width: 100%; /* Assure que l'en-tête prend toute la largeur */
+    margin-bottom: 30px; /* Ajoutez de l'espace sous l'en-tête */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em; /* Taille de titre plus grande */
+}
+
+/* --- Styles pour la section de connexion --- */
+#loginForm {
+    background-color: white; /* Fond blanc pour le formulaire */
+    padding: 30px; /* Espacement intérieur */
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombre */
+    width: 100%; /* Prendre toute la largeur disponible */
+    max-width: 400px; /* Largeur maximale pour le formulaire */
+    text-align: center; /* Centrer le contenu texte */
+    margin-bottom: 20px; /* Espace sous le formulaire */
+    box-sizing: border-box; /* Inclure padding dans la largeur */
+}
+
+#loginForm h2 {
+    color: #007BFF; /* Couleur du titre du formulaire */
+    margin-top: 0; /* Enlever la marge supérieure par défaut */
+    margin-bottom: 20px; /* Espacement sous le titre */
+    font-size: 1.8em;
+}
+
+#loginForm input[type="email"],
+#loginForm input[type="password"] {
+    width: 100%; /* Prendre toute la largeur du conteneur */
+    padding: 12px 15px; /* Padding pour un meilleur aspect */
+    margin-bottom: 15px; /* Espacement entre les champs */
+    border: 1px solid #ccc; /* Bordure légère */
+    border-radius: 5px; /* Coins arrondis pour les champs */
+    box-sizing: border-box; /* Inclure padding et bordure dans la largeur */
+    font-size: 1em;
+}
+
+#loginForm input[type="email"]:focus,
+#loginForm input[type="password"]:focus {
+    outline: none; /* Enlever l'outline par défaut */
+    border-color: #007BFF; /* Changer la couleur de la bordure au focus */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Ajouter une ombre légère au focus */
+}
+
+#loginForm button {
+    background-color: #28a745; /* Couleur verte pour le bouton */
+    color: white;
+    padding: 12px 25px; /* Espacement intérieur du bouton */
+    border: none; /* Pas de bordure */
+    border-radius: 5px; /* Coins arrondis pour le bouton */
+    cursor: pointer; /* Curseur de main au survol */
+    font-size: 1.1em;
+    transition: background-color 0.3s ease; /* Transition douce au survol */
+}
+
+#loginForm button:hover {
+    background-color: #218838; /* Couleur de survol plus foncée */
+}
+
+/* Styles pour le contenu protégé (caché par défaut) */
+#protectedContent {
+    display: none; /* Reste caché par défaut */
+    margin: 20px auto; /* Centrer le contenu protégé */
+    max-width: 800px; /* Largeur maximale pour le contenu protégé */
+    padding: 20px;
+    background-color: #e9ecef; /* Couleur de fond différente */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+#protectedContent h2 {
+    color: #555;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+#protectedContent p {
+    margin-bottom: 10px;
+}
+
+#protectedContent a {
+     color: #007BFF;
+     text-decoration: none;
+}
+
+#protectedContent a:hover {
+    text-decoration: underline;
+}
+
+/* --- Fin des Styles pour la section de connexion --- */
+
+
+/* Règle générale pour toutes les images (si vous en avez dans cette page) */
+img {
+    max-width: 100%;
+    height: auto;
+    box-sizing: border-box;
+}
+
+/* Responsive Design pour les éléments de connexion */
+@media (max-width: 480px) {
+    #loginForm {
+        padding: 20px; /* Réduire le padding sur les très petits écrans */
+    }
+
+    #loginForm input[type="email"],
+    #loginForm input[type="password"] {
+        padding: 10px; /* Réduire le padding des champs */
+    }
+
+    #loginForm button {
+        padding: 10px 20px; /* Réduire le padding du bouton */
+        font-size: 1em;
+    }
+}
