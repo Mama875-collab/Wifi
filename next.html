@@ -30,6 +30,7 @@
                 <li><a href="#distances">Distances des sites</a></li>
                 <li><a href="#propositions">Propositions d'idées</a></li>
                 <li><a href="#demonstrations">Démonstration des propositions</a></li>
+                <li><a href="#Instarout">Installation du routeur</a></li>
                 <li><a href="#ConfNano">Configuration du routeur</a></li>
             </ul>
         </nav>
@@ -253,14 +254,40 @@
 
         </ol>
     </section>
+	
+	<section id="Instarout"class="section-content">
+	<h2>Installation du routeur</h2>
+    <ol>
+        <li><b>Vérifiez l'autorisation d'accès.</b> Assurez-vous que votre fournisseur d'accès Internet autorise le changement de matériel et l'attribution d'une adresse IP automatique.</li>
+        <li><b>Connectez l'appareil à la source d'alimentation.</b></li>
+    </ol>
 
+    <h2>Connexion au réseau</h2>
+    <ol>
+        <li><b>Ouvrez les connexions réseau sur votre ordinateur.</b> Recherchez le réseau sans fil « MikroTik-... » (le nom exact dépendra du routeur).</li>
+        <li><b>Connectez-vous au réseau sans fil.</b></li>
+    </ol>	
+	</section>
+	
     <section id="ConfNano" class="section-content">
     <h2>Configuration du routeur hAP ax²</h2>
     <p>Comme demandé dans le cahier des charges, nous voulons un formulaire de connexion simple et similaire à celui de Wifi4EU de ce style :</p>
     <img src="im/w4EU.png" alt="Image du formulaire de connexion du Wifi4EU">
     <p>Mais notre objectif est d'avoir un formulaire qui ressemble plutôt à celui-ci :</p>
     <img src="im/form.png" alt="Image du formulaire de connexion voulu">
-    <p>Pour configurer cette interface nous allons avoir besoin du site pour <a href="https://help.mikrotik.com/docs/spaces/ROS/pages/87162881/Hotspot+customisation" target="blank">la documentation</a></p>
+	<ol>
+        <li><b>Configuration par navigateur ou application mobile :</b> La configuration peut être effectuée via le réseau sans fil, à l'aide d'un navigateur web ou d'une application mobile.</li>
+        <li><b>Configuration par WinBox (recommandé) :</b> Vous pouvez également utiliser l'outil de configuration <a href="https://mt.lv/winbox">WinBox</a> ou Télécharger ici l'application.</li>
+		<p><a href="Applications/winbox64.exe" download class="download-link">Télécharger l'application</a></p>
+        <li><b>Accès au panneau de configuration :</b> Ouvrez l'adresse <a href="http://192.168.88.1">http://192.168.88.1</a> dans votre navigateur web pour démarrer la configuration.</li>
+        <li><b>Informations d'identification :</b> Saisissez le nom d'utilisateur « admin » et il n'y a pas de mot de passe.</li>
+    </ol>
+	<ol>
+	<li>Nous voulon comme dit précedament avoir le même formulaire, et, dès que l'utilisateur est connecté rediriger sur le site de la ville de <a href="https://www.chateaugontiersurmayenne.fr">Château-Gontier-Sur-Mayenne</a></li>
+	<li><p>Pour configurer cette interface nous allons avoir besoin du site pour <a href="https://help.mikrotik.com/docs/spaces/ROS/pages/87162881/Hotspot+customisation" target="blank">la documentation</a></p></li>
+	<li></li>
+	</ol>
+	
 
 
 
