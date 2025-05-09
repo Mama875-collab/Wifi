@@ -350,3 +350,114 @@ header h1 {
     }
     /* autres ajustements si besoin */
 }
+
+
+/* Style général du tableau avec DataTables */
+table.dataTable {
+  width: 100%;
+  border-collapse: separate; /* pour avoir des bords arrondis si souhaité */
+  border-spacing: 0 10px; /* espace entre les lignes */
+  font-family: 'Roboto', sans-serif;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* En-tête du tableau */
+table.dataTable thead {
+  background-color: #007BFF; /* bleu clair pour l'en-tête */
+  color: #fff;
+  font-weight: bold;
+  font-size: 1em;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+table.dataTable thead th {
+  padding: 12px 15px;
+  text-align: left;
+}
+
+/* Ligne de l'en-tête pour un effet plus moderne */
+table.dataTable thead th:first-child {
+  border-top-left-radius: 8px;
+}
+table.dataTable thead th:last-child {
+  border-top-right-radius: 8px;
+}
+
+/* Corps du tableau */
+table.dataTable tbody td {
+  padding: 12px 15px;
+  background-color: #fff;
+  border-radius: 4px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+table.dataTable tbody td:hover {
+  background-color: #f1f1f1; /* léger survol */
+  transform: translateY(-2px);
+}
+
+/* Alternance des lignes pour plus de lisibilité */
+table.dataTable tbody tr:nth-child(odd) {
+  background-color: #fafafa;
+}
+table.dataTable tbody tr:nth-child(even) {
+  background-color: #fff;
+}
+
+/* Bordures des cellules */
+table.dataTable td, table.dataTable th {
+  border: none; /* pas de bordures classiques, pour un look épuré */
+}
+
+/* Pied de tableau (optionnel, si tu veux un fond différent) */
+table.dataTable tfoot {
+  display: none; /* ou personnalise si besoin */
+}
+
+/* Ajustements pour la pagination et autres éléments DataTables */
+.dataTables_wrapper {
+  padding: 10px 0;
+}
+
+.dataTables_filter {
+  margin-bottom: 10px;
+  font-size: 0.9em;
+}
+
+.dataTables_info {
+  font-size: 0.9em;
+}
+
+.dataTables_paginate {
+  margin-top: 10px;
+}
+
+.dataTables_paginate .paginate_button {
+  background: #007BFF;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  margin: 0 2px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.dataTables_paginate .paginate_button:hover,
+.dataTables_paginate .paginate_button.current {
+  background: #0056b3;
+}
+
+/* Responsive : ajustement si besoin */
+@media(max-width: 768px) {
+  /* Par exemple, réduire padding, changer taille de police si nécessaire */
+  table.dataTable thead th {
+    padding: 10px 8px;
+  }
+  table.dataTable tbody td {
+    padding: 10px 8px;
+  }
+}
