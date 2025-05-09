@@ -9,6 +9,8 @@
     <script src="slider.js" defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <script type="module" src="auth.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 </head>
 
 
@@ -30,6 +32,7 @@
                 <li><a href="#distances">Distances des sites</a></li>
                 <li><a href="#propositions">Propositions d'idées</a></li>
                 <li><a href="#demonstrations">Démonstration des propositions</a></li>
+                <li><a href="#comp">Comparaisons des solutions</a></li>
                 <li><a href="#Instarout">Installation du routeur</a></li>
                 <li><a href="#ConfNano">Configuration du routeur</a></li>
             </ul>
@@ -255,6 +258,52 @@
         </ol>
     </section>
 	
+	<section id="comp" class="section-content">
+	<table id="solu" class="display">
+	
+		<thead>
+		
+		<tr>
+		<th>Solution</th>
+		<th>Difficultée</th>
+		<th>Prix</th>
+		</tr>
+		</thead>
+		
+		<tbody>
+		<tr>
+		<td>Solution_1</td>
+		<td>Moyen</td>
+		<td>944</td>
+		</tr>
+		
+		<tr>
+		<td>Solution_2</td>
+		<td>Simple</td>
+		<td>NA</td>
+		</tr>
+		
+		<tr>
+		<td>Solution_3</td>
+		<td>Difficile</td>
+		<td>889,15</td>
+		</tr>
+		
+		<tr>
+		<td>Solution_4_1</td>
+		<td>Moyen</td>
+		<td>944</td>
+		</tr>
+		
+		<tr>
+		<td>Solution_4_2</td>
+		<td>Moyen</td>
+		<td>952,9</td>
+		</tr>
+	
+		</tbody>
+	</section>
+	
 	<section id="Instarout"class="section-content">
 	<h2>Installation du routeur</h2>
     <ol>
@@ -324,6 +373,11 @@
           console.error("Erreur: Impossible de trouver les éléments du menu burger. Vérifiez vos sélecteurs.");
       }
   });
+  
+  $(document).ready(function() {
+    $('#solu').DataTable();
+});
+
 </script>
 
 </body>
