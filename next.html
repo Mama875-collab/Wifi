@@ -333,11 +333,22 @@
         <li><b>Informations d'identification :</b> Saisissez le nom d'utilisateur « admin » et il n'y a pas de mot de passe.</li>
     </ol>
 	<ol>
-	<li>Nous voulon comme dit précedament avoir le même formulaire, et, dès que l'utilisateur est connecté rediriger sur le site de la ville de <a href="https://www.chateaugontiersurmayenne.fr">Château-Gontier-Sur-Mayenne</a></li>
-	<li><p>Pour configurer cette interface nous allons avoir besoin du site pour <a href="https://help.mikrotik.com/docs/spaces/ROS/pages/87162881/Hotspot+customisation" target="blank">la documentation</a></p></li>
-	<li></li>
+	<li>Nous voulons comme dit précedament avoir le même formulaire, et ce, dès que l'utilisateur est connecté rediriger sur le site de la ville de <a href="https://www.chateaugontiersurmayenne.fr">Château-Gontier-Sur-Mayenne</a></li>
+	<li><p>Pour configurer cette interface nous allons avoir besoin du site pour <a href="https://help.mikrotik.com/docs/spaces/ROS/pages/167706788/Default+configurations#Defaultconfigurations-APRouter" target="blank">la documentation</a></p></li>
 	</ol>
-	
+	<h3>Programme du routeur</h3>
+	<ol>
+	<li><b>Configuration de la page de redirection :</b> cette partie aura comme valeur ; <pre><code><input type="hidden" name="dst" value="https://www.chateaugontiersurmayenne.fr"></code></pre>
+	<li><b>Le formulaire de connexion :</b></li> elle se présentera de cette manière ; <pre><code>
+	<type="texte" value="$(nom d'utilisateur)>
+	<input type="mot de passe" name="password">
+	<input type="checkbox" id="age" name="age" value="15+" />
+	<label for="age">J'ai 15 ans ou plus</label><br/><br/>
+	<input type="checkbox" id="conditions" name="conditions" value="accepted" required />
+	<label for="conditions">J'accepte les conditions générales</label><br/><br/>
+	<button type="submit">Envoyer</button>
+	</code></pre>
+	</ol>
 
 
 
