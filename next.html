@@ -30,6 +30,7 @@
                 <li><a href="#distances">Distances des sites</a></li>
                 <li><a href="#propositions">Propositions d'idées</a></li>
                 <li><a href="#demonstrations">Démonstration des propositions</a></li>
+                <li><a href="#comp">Comparaisons des solutions</a></li>
                 <li><a href="#Instarout">Installation du routeur</a></li>
                 <li><a href="#ConfNano">Configuration du routeur</a></li>
             </ul>
@@ -255,6 +256,55 @@
         </ol>
     </section>
 	
+	<section id="comp" class="section-content">
+	<table id="solu" class="display">
+	<h2>Comparaisons des solutions</h2>
+	<p>Dans ce tableau, nous comparons les solutions en fonction du prix et de la difficultée :</p>
+	
+		<thead>
+		
+		<tr>
+		<th>Solution</th>
+		<th>Difficultée</th>
+		<th>Prix</th>
+		</tr>
+		</thead>
+		
+		<tbody>
+		<tr>
+		<td>Solution_1</td>
+		<td>Moyen</td>
+		<td>944</td>
+		</tr>
+		
+		<tr>
+		<td>Solution_2</td>
+		<td>Simple</td>
+		<td>NA</td>
+		</tr>
+		
+		<tr>
+		<td>Solution_3</td>
+		<td>Difficile</td>
+		<td>889,15</td>
+		</tr>
+		
+		<tr>
+		<td>Solution_4_1</td>
+		<td>Moyen</td>
+		<td>944</td>
+		</tr>
+		
+		<tr>
+		<td>Solution_4_2</td>
+		<td>Moyen</td>
+		<td>952,9</td>
+		</tr>
+	
+		</tbody>
+	</table>
+	</section>
+	
 	<section id="Instarout"class="section-content">
 	<h2>Installation du routeur</h2>
     <ol>
@@ -283,11 +333,25 @@
         <li><b>Informations d'identification :</b> Saisissez le nom d'utilisateur « admin » et il n'y a pas de mot de passe.</li>
     </ol>
 	<ol>
-	<li>Nous voulon comme dit précedament avoir le même formulaire, et, dès que l'utilisateur est connecté rediriger sur le site de la ville de <a href="https://www.chateaugontiersurmayenne.fr">Château-Gontier-Sur-Mayenne</a></li>
-	<li><p>Pour configurer cette interface nous allons avoir besoin du site pour <a href="https://help.mikrotik.com/docs/spaces/ROS/pages/87162881/Hotspot+customisation" target="blank">la documentation</a></p></li>
-	<li></li>
+	<li>Nous voulons comme dit précedament avoir le même formulaire, et ce, dès que l'utilisateur est connecté rediriger sur le site de la ville de <a href="https://www.chateaugontiersurmayenne.fr">Château-Gontier-Sur-Mayenne</a></li>
+	<li><p>Pour configurer cette interface nous allons avoir besoin du site pour <a href="https://help.mikrotik.com/docs/spaces/ROS/pages/167706788/Default+configurations#Defaultconfigurations-APRouter" target="blank">la documentation</a></p></li>
 	</ol>
-	
+	<h3>Programme du routeur</h3>
+	<ol>
+	<li><b>Configuration de la page de redirection :</b> cette partie aura comme valeur ; <pre><code><input name="dst" value="https://www.chateaugontiersurmayenne.fr"></code></pre>
+	<li><b>Le formulaire de connexion :</b></li> elle se présentera de cette manière ; 
+	<pre><code>
+	<input type="texte" id="utilisateur" value="$(nom d'utilisateur)">
+	<label for="utilisateur"> Nom d'utilisateur </label>
+	<input type="mot de passe" id="mdp" name="password">
+	<label for="mdp"> Mots de passe </label>
+	<input type="checkbox" id="age" name="age" value="15+" />
+	<label for="age">J'ai 15 ans ou plus</label><br/><br/>
+	<input type="checkbox" id="conditions" name="conditions" value="accepted" required />
+	<label for="conditions">J'accepte les conditions générales</label><br/><br/>
+	<button type="submit">Envoyer</button>
+	</code></pre>
+	</ol>
 
 
 
@@ -297,7 +361,8 @@
 
 
 <script src="slider.js" defer></script>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 
 <script>
   // Attendre  DOM soit entièrement chargé avant d'exécuter le script
@@ -324,6 +389,11 @@
           console.error("Erreur: Impossible de trouver les éléments du menu burger. Vérifiez vos sélecteurs.");
       }
   });
+  
+  $(document).ready(function() {
+    $('#solu').DataTable();
+});
+
 </script>
 
 </body>
